@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Admin;
+namespace App\Controllers\Home;
 
 use App\Controllers\BaseController;
 
@@ -8,6 +8,6 @@ class Auth extends BaseController
 {
     public function index()
     {
-        return view('auth/admin_signin');
+        return view('auth/user_signin');
     }
 }

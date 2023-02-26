@@ -31,10 +31,13 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 
 // Hompage Routes
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Home\Home::index');
+
+$routes->get('/signin', 'Home\Auth::index');
+$routes->get('/detection', 'Home\Detection::index');
 
 // Authen Routes
-$routes->get('/signin', 'Admin\Auth::index');
+$routes->get('adminsignin', 'Admin\Auth::index');
 
 // Admin Routes
 
