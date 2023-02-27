@@ -33,7 +33,8 @@ $routes->set404Override();
 // Hompage Routes
 $routes->get('/', 'Home\Home::index');
 
-$routes->get('/signin', 'Home\Auth::index');
+$routes->get('/signup', 'Home\Auth::signup');
+$routes->get('/signin', 'Home\Auth::signin');
 $routes->get('/detection', 'Home\Detection::index');
 
 // Authen Routes
