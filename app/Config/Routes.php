@@ -41,7 +41,7 @@ $routes->get('/detection', 'Home\Detection::index');
 $routes->get('adminsignin', 'Admin\Auth::index');
 
 // Admin Routes
-
+$routes->get('/admin', 'Admin\Dashboard::index');
 
 // API Routes
 
