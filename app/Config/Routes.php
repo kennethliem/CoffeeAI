@@ -15,6 +15,7 @@ $routes->setDefaultController('Home');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
+$routes->setAutoRoute(false);
 // The Auto Routing (Legacy) is very dangerous. It is easy to create vulnerable apps
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
@@ -38,11 +39,35 @@ $routes->get('/signin', 'Home\Auth::signin');
 $routes->get('/detection', 'Home\Detection::index');
 
 // Authen Routes
-$routes->get('adminsignin', 'Admin\Auth::index');
+$routes->get('/admin/signin', 'Admin\Auth::index');
 
 // Admin Routes
-$routes->get('/admin', 'Admin\Welcome::index');
-$routes->get('/admin/dasboard', 'Admin\Dashboard::index');
+// Filter Authenadmin
+$routes->group('admin', function ($routes) {
+    $routes->get('/', 'Admin\Welcome::index');
+
+    $routes->get('dashboard', 'Admin\Dashboard::index');
+
+    $routes->group('content', function ($routes) {
+        $routes->get('/', 'Admin\PageContent::index');
+    });
+    $routes->group('client', function ($routes) {
+        $routes->get('/', 'Admin\ClientInfo::index');
+    });
+    $routes->group('modelconfig', function ($routes) {
+        $routes->get('/', 'Admin\ModelConfig::index');
+    });
+    $routes->group('profile', function ($routes) {
+        $routes->get('/', 'Admin\Profile::index');
+    });
+    // Filter Super user
+    $routes->group('management', function ($routes) {
+        $routes->get('/', 'Admin\AdminManagement::index');
+    });
+    $routes->group('documentation', function ($routes) {
+        $routes->get('/', 'Admin\Documentation::index');
+    });
+});
 
 // API Routes
 

@@ -2,12 +2,6 @@
 
 <div class="py-4">
     <div class="dropdown">
-        <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-            </svg>
-            New Task
-        </button>
         <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
             <a class="dropdown-item d-flex align-items-center" href="#">
                 <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -314,7 +308,7 @@
                                     <div class="col-auto">
                                         <!-- Avatar -->
                                         <a href="#" class="avatar">
-                                            <img class="rounded" alt="Image placeholder" src="admin_assets/assets/img/team/profile-picture-1.jpg">
+                                            <img class="rounded" alt="Image placeholder" src="<?= base_url('admin_assets/assets/img/team/profile-picture-1.jpg'); ?>">
                                         </a>
                                     </div>
                                     <div class="col-auto ms--2">
@@ -341,7 +335,7 @@
                                     <div class="col-auto">
                                         <!-- Avatar -->
                                         <a href="#" class="avatar">
-                                            <img class="rounded" alt="Image placeholder" src="admin_assets/assets/img/team/profile-picture-2.jpg">
+                                            <img class="rounded" alt="Image placeholder" src="<?= base_url('admin_assets/assets/img/team/profile-picture-2.jpg'); ?>">
                                         </a>
                                     </div>
                                     <div class="col-auto ms--2">
@@ -368,7 +362,7 @@
                                     <div class="col-auto">
                                         <!-- Avatar -->
                                         <a href="#" class="avatar">
-                                            <img class="rounded" alt="Image placeholder" src="admin_assets/assets/img/team/profile-picture-3.jpg">
+                                            <img class="rounded" alt="Image placeholder" src="<?= base_url('admin_assets/assets/img/team/profile-picture-3.jpg'); ?>">
                                         </a>
                                     </div>
                                     <div class="col-auto ms--2">
@@ -395,7 +389,7 @@
                                     <div class="col-auto">
                                         <!-- Avatar -->
                                         <a href="#" class="avatar">
-                                            <img class="rounded" alt="Image placeholder" src="admin_assets/assets/img/team/profile-picture-4.jpg">
+                                            <img class="rounded" alt="Image placeholder" src="<?= base_url('admin_assets/assets/img/team/profile-picture-4.jpg'); ?>">
                                         </a>
                                     </div>
                                     <div class="col-auto ms--2">

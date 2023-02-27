@@ -7,7 +7,7 @@
                 <div class="col-12 col-lg-5 order-2 order-lg-1 text-center text-lg-left">
                     <h1 class="mt-5">Hello, Welcome back <span class="text-danger">admin</span> name</h1>
                     <p class="lead my-4">It's nice to see you back, have a nice day and don't forget to drink a glass of coffee <span class="text-danger">-CoffeeAI</span></p>
-                    <a href="<?= base_url('/dashboard'); ?>" class="btn btn-gray-800 d-inline-flex align-items-center justify-content-center mb-4">
+                    <a href="<?= base_url('/admin/dashboard'); ?>" class="btn btn-gray-800 d-inline-flex align-items-center justify-content-center mb-4">
                         Go to Dashboard
                     </a>
                 </div>
