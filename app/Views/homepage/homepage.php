@@ -49,7 +49,7 @@
               We understand the importance of knowing the exact type of coffee beans used in coffee-making, and have made it our mission to provide accurate and detailed information about each type of coffee bean. Through our website, users can learn about the origins, taste profiles, and brewing techniques for each type of coffee bean.
             </p>
             <div class="text-center text-lg-start">
-              <a href="#features" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center">
+              <a href="#features" class="btn-read-more d-inline-flex align-items-center justify-content-center align-self-center scrollto">
                 <span>Read More</span>
                 <i class="bi bi-arrow-right"></i>
               </a>
