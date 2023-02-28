@@ -156,9 +156,9 @@
   });
 
   /**
-   * Clients Slider
+   * sponsors Slider
    */
-  new Swiper('.clients-slider', {
+  new Swiper('.sponsors-slider', {
     speed: 400,
     loop: true,
     autoplay: {
@@ -195,23 +195,23 @@
    * Porfolio isotope and filter
    */
   window.addEventListener('load', () => {
-    let portfolioContainer = select('.portfolio-container');
-    if (portfolioContainer) {
-      let portfolioIsotope = new Isotope(portfolioContainer, {
-        itemSelector: '.portfolio-item',
+    let coffeetypeContainer = select('.coffeetype-container');
+    if (coffeetypeContainer) {
+      let coffeetypeIsotope = new Isotope(coffeetypeContainer, {
+        itemSelector: '.coffeetype-item',
         layoutMode: 'fitRows'
       });
 
-      let portfolioFilters = select('#portfolio-flters li', true);
+      let coffeetypeFilters = select('#coffeetype-flters li', true);
 
-      on('click', '#portfolio-flters li', function(e) {
+      on('click', '#coffeetype-flters li', function(e) {
         e.preventDefault();
-        portfolioFilters.forEach(function(el) {
+        coffeetypeFilters.forEach(function(el) {
           el.classList.remove('filter-active');
         });
         this.classList.add('filter-active');
 
-        portfolioIsotope.arrange({
+        coffeetypeIsotope.arrange({
           filter: this.getAttribute('data-filter')
         });
         aos_init();
@@ -221,16 +221,16 @@
   });
 
   /**
-   * Initiate portfolio lightbox 
+   * Initiate coffeetype lightbox 
    */
-  const portfolioLightbox = GLightbox({
+  const coffeetypeLightbox = GLightbox({
     selector: '.portfokio-lightbox'
   });
 
   /**
-   * Portfolio details slider
+   * coffeetype details slider
    */
-  new Swiper('.portfolio-details-slider', {
+  new Swiper('.coffeetype-details-slider', {
     speed: 400,
     autoplay: {
       delay: 5000,
