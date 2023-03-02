@@ -8,6 +8,9 @@ class Welcome extends BaseController
 {
     public function index()
     {
-        return view('admin/welcome');
+        $data = [
+            'title' => 'Welcome Admin'
+        ];
+        return view('admin/welcome', $data);
     }
 }

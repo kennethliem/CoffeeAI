@@ -4,13 +4,13 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class Documentation extends BaseController
+class Faq extends BaseController
 {
     public function index()
     {
         $data = [
-            'title' => 'Documentation'
+            'title' => 'Frequently Asked Questions'
         ];
-        return view('admin/documentation', $data);
+        return view('admin/faq', $data);
     }
 }

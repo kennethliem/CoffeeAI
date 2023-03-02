@@ -65,6 +65,17 @@
 <!-- Volt JS -->
 <script src="<?= base_url('admin_assets/assets/js/volt.js'); ?>"></script>
 
+<script>
+    var dataTable = new DataTable("#myTable", {
+        searchable: true,
+        sortable: true,
+        fixedHeight: true,
+        layout: {
+            top: "{select}{search}",
+            bottom: "{pager}{info}"
+        },
+    });
+</script>
 
 </body>
 

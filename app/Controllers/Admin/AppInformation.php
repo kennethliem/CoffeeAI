@@ -4,13 +4,13 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 
-class Documentation extends BaseController
+class AppInformation extends BaseController
 {
     public function index()
     {
         $data = [
-            'title' => 'Documentation'
+            'title' => 'Application Informations'
         ];
-        return view('admin/documentation', $data);
+        return view('admin/app_information', $data);
     }
 }

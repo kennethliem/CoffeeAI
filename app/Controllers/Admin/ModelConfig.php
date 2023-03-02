@@ -8,6 +8,9 @@ class ModelConfig extends BaseController
 {
     public function index()
     {
-        return view('admin/model_config');
+        $data = [
+            'title' => 'Deep Learning Model Configuration'
+        ];
+        return view('admin/model_config', $data);
     }
 }

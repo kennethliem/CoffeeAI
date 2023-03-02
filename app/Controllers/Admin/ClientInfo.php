@@ -8,6 +8,9 @@ class ClientInfo extends BaseController
 {
     public function index()
     {
-        return view('admin/client_info');
+        $data = [
+            'title' => 'Client Information'
+        ];
+        return view('admin/client_info', $data);
     }
 }

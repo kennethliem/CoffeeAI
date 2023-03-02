@@ -48,11 +48,29 @@ $routes->group('admin', function ($routes) {
 
     $routes->get('dashboard', 'Admin\Dashboard::index');
 
-    $routes->group('content', function ($routes) {
-        $routes->get('/', 'Admin\PageContent::index');
+    $routes->group('information', function ($routes) {
+        $routes->get('/', 'Admin\AppInformation::index');
     });
-    $routes->group('client', function ($routes) {
+    $routes->group('features', function ($routes) {
+        $routes->get('/', 'Admin\AppFeatures::index');
+    });
+    $routes->group('bean', function ($routes) {
+        $routes->get('/', 'Admin\BeanDirectory::index');
+    });
+    $routes->group('faq', function ($routes) {
+        $routes->get('/', 'Admin\Faq::index');
+    });
+    $routes->group('sponsors', function ($routes) {
+        $routes->get('/', 'Admin\Sponsors::index');
+    });
+    $routes->group('teams', function ($routes) {
+        $routes->get('/', 'Admin\Teams::index');
+    });
+    $routes->group('clients', function ($routes) {
         $routes->get('/', 'Admin\ClientInfo::index');
+    });
+    $routes->group('contents', function ($routes) {
+        $routes->get('/', 'Admin\PageContent::index');
     });
     $routes->group('modelconfig', function ($routes) {
         $routes->get('/', 'Admin\ModelConfig::index');

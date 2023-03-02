@@ -8,6 +8,9 @@ class PageContent extends BaseController
 {
     public function index()
     {
-        return view('admin/page_content');
+        $data = [
+            'title' => 'Page Contents'
+        ];
+        return view('admin/page_content', $data);
     }
 }
