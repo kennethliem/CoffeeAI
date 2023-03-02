@@ -6,18 +6,14 @@
     <!-- Primary Meta Tags -->
     <title>Admin - CoffeeAI</title>
 
-    <!-- Sweet Alert -->
-    <link type="text/css" href="<?= base_url('admin_assets/vendor/sweetalert2/dist/sweetalert2.min.css'); ?>" rel="stylesheet">
-
-    <!-- Notyf -->
-    <link type="text/css" href="<?= base_url('admin_assets/vendor/notyf/notyf.min.css'); ?>" rel="stylesheet">
-
     <!-- Datatable -->
     <link href="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.css" rel="stylesheet" type="text/css">
     <script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
 
     <!-- Volt CSS -->
     <link type="text/css" href="<?= base_url('admin_assets/css/volt.css'); ?>" rel="stylesheet">
+
+    <!-- Bootstrap Icon -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css" integrity="sha384-b6lVK+yci+bfDmaY1u0zE8YYJt0TZxLEAFyYSLHId4xoVvsrQu3INevFKo+Xir8e" crossorigin="anonymous">
 
 
@@ -133,13 +129,13 @@
                 </li>
 
                 <li class="nav-item ">
-                    <a href="<?= base_url('/admin/client'); ?>" class="nav-link">
+                    <a href="<?= base_url('/admin/clients'); ?>" class="nav-link">
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
                             </svg>
                         </span>
-                        <span class="sidebar-text">Client Information</span>
+                        <span class="sidebar-text">Users Information</span>
                     </a>
                 </li>
                 <li class="nav-item ">
@@ -220,18 +216,20 @@
                         <li class="nav-item dropdown ms-lg-3">
                             <a class="nav-link dropdown-toggle pt-1 px-0" href="<?= base_url(''); ?>#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="media d-flex align-items-center">
-                                    <img class="avatar rounded-circle" alt="Image placeholder" src="<?= base_url('admin_assets/assets/img/team/profile-picture-3.jpg'); ?>">
-                                    <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                        <span class="mb-0 font-small fw-bold text-gray-900">Username</span>
+                                    <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block me-2">
+                                        <span class="mb-0 font-small fw-bold text-gray-900">Kenneth Liem Hardadi</span>
                                     </div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="gray" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                                    </svg>
                                 </div>
                             </a>
                             <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
-                                <a class="dropdown-item d-flex align-items-center" href="<?= base_url(''); ?>#">
-                                    <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <a class="dropdown-item d-flex align-items-center" href="<?= base_url('/admin/profile'); ?>#">
+                                    <svg class="dropdown-icon text-gray-400 me-2" fill="gray" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path>
                                     </svg>
-                                    My Profile
+                                    MyProfile
                                 </a>
                                 <div role="separator" class="dropdown-divider my-1"></div>
                                 <a class="dropdown-item d-flex align-items-center" href="<?= base_url(''); ?>#">
@@ -259,7 +257,7 @@
                                 </svg>
                             </a>
                         </li>
-                        <li class="breadcrumb-item active"><a href="<?= base_url('/admin/management'); ?>"><?= $title; ?></a></li>
+                        <li class="breadcrumb-item active"><?= $title; ?></li>
                     </ol>
                 </nav>
                 <div class="d-flex justify-content-between w-100 flex-wrap">
