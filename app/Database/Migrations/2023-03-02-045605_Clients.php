@@ -34,9 +34,7 @@ class Clients extends Migration
             'token_exp'       => [
                 'type'           => 'DATE'
             ],
-            'created_at'       => [
-                'type'           => 'DATETIME'
-            ],
+            'created_at DATETIME DEFAULT CURRENT_TIMESTAMP',
             'updated_at'       => [
                 'type'           => 'DATETIME'
             ],
