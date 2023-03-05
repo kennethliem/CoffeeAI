@@ -3,23 +3,25 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use Michalsn\Uuid\UuidModel;
 
-class AdminModel extends Model
+class AdminModel extends UuidModel
 {
     protected $table = 'users';
+    protected $primaryKey = 'uuid';
+    protected $useAutoIncrement = false;
     protected $useTimestamps = true;
-    protected $allowedFields = ['uuid', 'email', 'fullname', 'password_hash', 'token', 'role', 'token', 'updated_by', 'is_active'];
+    protected $allowedFields = ['uuid', 'email', 'full_name', 'phone', 'password_hash', 'token', 'role', 'token', 'updated_by', 'is_active'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpddate = ['beforeUpdate'];
 
-    public function getUsers($id = false)
+    public function getUsers($uuid = false)
     {
-        if ($id == false) {
+        if ($uuid == false) {
             return $this->findAll();
         }
-        return $this->where(['uuid' => $id])->first();
+        return $this->where(['uuid' => $uuid])->first();
     }
-
 
     protected function beforeInsert(array $data)
     {

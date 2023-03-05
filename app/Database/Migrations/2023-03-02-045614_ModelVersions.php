@@ -9,12 +9,6 @@ class ModelVersions extends Migration
     public function up()
     {
         $this->forge->addField([
-            'model_id'          => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-                'auto_increment' => true
-            ],
             'uuid'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '50'
@@ -42,7 +36,7 @@ class ModelVersions extends Migration
         ]);
 
         // Membuat primary key
-        $this->forge->addKey('model_id', TRUE);
+        $this->forge->addKey('uuid', TRUE);
 
         // Membuat tabel news
         $this->forge->createTable('model_versions', TRUE);

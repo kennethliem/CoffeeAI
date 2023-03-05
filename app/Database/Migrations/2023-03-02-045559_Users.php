@@ -9,12 +9,6 @@ class Users extends Migration
     public function up()
     {
         $this->forge->addField([
-            'user_id'          => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-                'auto_increment' => true
-            ],
             'uuid'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '50'
@@ -26,6 +20,10 @@ class Users extends Migration
             'full_name'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '120'
+            ],
+            'phone'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '15'
             ],
             'password_hash'       => [
                 'type'           => 'VARCHAR',
@@ -44,6 +42,10 @@ class Users extends Migration
             'updated_at'       => [
                 'type'           => 'DATETIME'
             ],
+            'updated_by'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '50'
+            ],
             'is_active'       => [
                 'type'           => 'INT',
                 'constraint'     => 1
@@ -51,7 +53,7 @@ class Users extends Migration
         ]);
 
         // Membuat primary key
-        $this->forge->addKey('user_id', TRUE);
+        $this->forge->addKey('uuid', TRUE);
 
         // Membuat tabel news
         $this->forge->createTable('users', TRUE);

@@ -81,6 +81,8 @@ $routes->group('admin', function ($routes) {
     // Filter Super user
     $routes->group('management', function ($routes) {
         $routes->get('/', 'Admin\AdminManagement::index');
+        $routes->post('addadmin', 'Admin\AdminManagement::register');
+        $routes->delete('delete/(:any)', 'Admin\AdminManagement::delete/$1');
     });
     $routes->group('documentation', function ($routes) {
         $routes->get('/', 'Admin\Documentation::index');

@@ -7,6 +7,9 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Tests\\Support\\' => array($baseDir . '/tests/_support'),
+    'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
+    'Ramsey\\Uuid\\' => array($vendorDir . '/ramsey/uuid/src'),
+    'Ramsey\\Collection\\' => array($vendorDir . '/ramsey/collection/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
     'PhpParser\\' => array($vendorDir . '/nikic/php-parser/lib/PhpParser'),
@@ -15,4 +18,5 @@ return array(
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
     'CodeIgniter\\' => array($vendorDir . '/codeigniter4/framework/system'),
+    'Brick\\Math\\' => array($vendorDir . '/brick/math/src'),
 );

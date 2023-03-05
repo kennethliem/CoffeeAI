@@ -9,12 +9,6 @@ class AppFeatures extends Migration
     public function up()
     {
         $this->forge->addField([
-            'feature_id'          => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-                'auto_increment' => true
-            ],
             'uuid'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '50'
@@ -46,7 +40,7 @@ class AppFeatures extends Migration
         ]);
 
         // Membuat primary key
-        $this->forge->addKey('feature_id', TRUE);
+        $this->forge->addKey('uuid', TRUE);
 
         // Membuat tabel news
         $this->forge->createTable('app_features', TRUE);

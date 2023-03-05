@@ -34,6 +34,9 @@
 
 <!-- Sweet Alerts 2 -->
 <script src="<?= base_url('admin_assets/vendor/sweetalert2/dist/sweetalert2.all.min.js'); ?>"></script>
+<!-- Smooth scroll -->
+
+<script src="<?= base_url('admin_assets/vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js'); ?>"></script>
 
 <!-- Volt JS -->
 <script src="<?= base_url('admin_assets/assets/js/volt.js'); ?>"></script>

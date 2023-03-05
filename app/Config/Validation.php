@@ -25,6 +25,7 @@ class Validation extends BaseConfig
         FormatRules::class,
         FileRules::class,
         CreditCardRules::class,
+        \App\Validation\AdminRules::class,
     ];
 
     /**
@@ -37,8 +38,4 @@ class Validation extends BaseConfig
         'list'   => 'CodeIgniter\Validation\Views\list',
         'single' => 'CodeIgniter\Validation\Views\single',
     ];
-
-    // --------------------------------------------------------------------
-    // Rules
-    // --------------------------------------------------------------------
 }

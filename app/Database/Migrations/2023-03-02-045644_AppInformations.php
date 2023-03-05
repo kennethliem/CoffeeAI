@@ -9,12 +9,6 @@ class AppInformations extends Migration
     public function up()
     {
         $this->forge->addField([
-            'info_id'          => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-                'auto_increment' => true
-            ],
             'app_name'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '100'
@@ -65,7 +59,7 @@ class AppInformations extends Migration
         ]);
 
         // Membuat primary key
-        $this->forge->addKey('info_id', TRUE);
+        $this->forge->addKey('uuid', TRUE);
 
         // Membuat tabel news
         $this->forge->createTable('app_informations', TRUE);

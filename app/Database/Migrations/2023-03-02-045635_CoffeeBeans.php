@@ -9,12 +9,6 @@ class CoffeeBeans extends Migration
     public function up()
     {
         $this->forge->addField([
-            'bean_id'          => [
-                'type'           => 'INT',
-                'constraint'     => 11,
-                'unsigned'       => true,
-                'auto_increment' => true
-            ],
             'uuid'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '50'
@@ -50,7 +44,7 @@ class CoffeeBeans extends Migration
         ]);
 
         // Membuat primary key
-        $this->forge->addKey('bean_id', TRUE);
+        $this->forge->addKey('uuid', TRUE);
 
         // Membuat tabel news
         $this->forge->createTable('coffee_beans', TRUE);
