@@ -25,6 +25,10 @@ class Users extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '15'
             ],
+            'address'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255'
+            ],
             'password_hash'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255'

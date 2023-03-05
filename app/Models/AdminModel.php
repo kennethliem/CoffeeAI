@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use CodeIgniter\Model;
 use Michalsn\Uuid\UuidModel;
 
 class AdminModel extends UuidModel
@@ -11,7 +10,7 @@ class AdminModel extends UuidModel
     protected $primaryKey = 'uuid';
     protected $useAutoIncrement = false;
     protected $useTimestamps = true;
-    protected $allowedFields = ['uuid', 'email', 'full_name', 'phone', 'password_hash', 'token', 'role', 'token', 'updated_by', 'is_active'];
+    protected $allowedFields = ['uuid', 'email', 'full_name', 'phone', 'address', 'password_hash', 'token', 'role', 'token', 'updated_by', 'is_active'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpddate = ['beforeUpdate'];
 
@@ -47,8 +46,8 @@ class AdminModel extends UuidModel
 
     protected function passwordHash(array $data)
     {
-        if (isset($data['data']['password']))
-            $data['data']['password'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+        if (isset($data['data']['password_hash']))
+            $data['data']['password_hash'] = password_hash($data['data']['password_hash'], PASSWORD_DEFAULT);
         return $data;
     }
 }

@@ -4,7 +4,6 @@ namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
 use App\Models\AdminModel;
-use Ramsey\Uuid\Uuid;
 
 class AdminManagement extends BaseController
 {
@@ -35,6 +34,7 @@ class AdminManagement extends BaseController
             $rules = [
                 'full_name' => 'required|min_length[3]|max_length[30]',
                 'phone' => 'required|min_length[3]|max_length[30]',
+                'phone' => 'required|min_length[3]|max_length[255]',
                 'email' => 'required|min_length[6]|max_length[50]|valid_email',
                 'password' => 'required|min_length[6]|max_length[255]',
             ];
@@ -48,6 +48,7 @@ class AdminManagement extends BaseController
                     'full_name' => htmlspecialchars($this->request->getVar('full_name')),
                     'email' => htmlspecialchars($this->request->getVar('email')),
                     'phone' => htmlspecialchars($this->request->getVar('phone')),
+                    'address' => htmlspecialchars($this->request->getVar('address')),
                     'role' => htmlspecialchars($this->request->getVar('select_role')),
                     'password_hash' => htmlspecialchars($this->request->getVar('password')),
                     'is_active' => 0,
@@ -58,6 +59,26 @@ class AdminManagement extends BaseController
                 return redirect()->to(base_url('admin/management'));
             }
         }
+    }
+    public function setActive($uuid)
+    {
+        if ($this->request->getMethod() == 'put') {
+            $this->adminModel->save([
+                'uuid' => $uuid,
+                'is_active' => htmlspecialchars($this->request->getVar('setactive')),
+                'updated_by' => session()->get('full_name'),
+            ]);
+            session()->setFlashdata('success', 'Data updated');
+            return redirect()->to(base_url('admin/management'));
+        }
+    }
+
+    public function detail($uuid)
+    {
+        $data = [
+            'user' => $this->adminModel->getUsers($uuid),
+        ];
+        return view('admin/modal/detail/detailuser', $data);
     }
 
     public function delete($uuid)

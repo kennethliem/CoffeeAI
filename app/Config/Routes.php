@@ -82,6 +82,7 @@ $routes->group('admin', function ($routes) {
     $routes->group('management', function ($routes) {
         $routes->get('/', 'Admin\AdminManagement::index');
         $routes->post('addadmin', 'Admin\AdminManagement::register');
+        $routes->put('setactive/(:any)', 'Admin\AdminManagement::setActive/$1');
         $routes->delete('delete/(:any)', 'Admin\AdminManagement::delete/$1');
     });
     $routes->group('documentation', function ($routes) {
