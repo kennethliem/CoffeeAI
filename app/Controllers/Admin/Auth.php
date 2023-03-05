@@ -15,15 +15,15 @@ class Auth extends BaseController
 
     public function index()
     {
-        $data = [,
+        $data = [
             'title' => 'Admin Login - CoffeeAI',
             'validation' => \Config\Services::validation(),
         ];
         helper(['form']);
         if ($this->request->getMethod() == 'post') {
             $rules = [
-                'email' => 'required|min_length[6]|max_length[50]|valid_email',
-                'password' => 'required|min_length[6]|max_length[255]|validateAdmin[email,password]',
+                'email' => 'required|min_length[3]|max_length[50]|valid_email',
+                'password' => 'required|min_length[3]|max_length[255]|validateAdmin[email,password]',
             ];
 
             $errors = [
@@ -32,6 +32,7 @@ class Auth extends BaseController
                 ]
             ];
             if (!$this->validate($rules, $errors)) {
+                session()->setFlashdata('error', $data['validation']->listErrors());
                 return redirect()->to(base_url('/admin/signin'))->withInput();
             } else {
                 $user = $this->adminModel->where('email', $this->request->getVar('email'))->first();
@@ -39,6 +40,7 @@ class Auth extends BaseController
                     $this->setUserSession($user);
                     return redirect()->to(base_url('/admin'));
                 }
+                session()->setFlashdata('error', "User has been disabled");
                 return redirect()->to(base_url('/admin/signin'))->withInput();
             }
         }
@@ -56,5 +58,11 @@ class Auth extends BaseController
         ];
         session()->set($data);
         return true;
+    }
+
+    public function signout()
+    {
+        session()->destroy();
+        return redirect()->to(base_url());
     }
 }

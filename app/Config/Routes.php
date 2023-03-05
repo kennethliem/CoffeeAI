@@ -39,11 +39,12 @@ $routes->get('/signin', 'Home\Auth::signin');
 $routes->get('/detection', 'Home\Detection::index');
 
 // Authen Routes
-$routes->get('/admin/signin', 'Admin\Auth::index');
+$routes->match(['get', 'post'], '/admin/signin', 'Admin\Auth::index', ['filter' => 'noauthadmin']);
+$routes->get('/admin/signout', 'Admin\Auth::signout');
 
 // Admin Routes
 // Filter Authenadmin
-$routes->group('admin', function ($routes) {
+$routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     $routes->get('/', 'Admin\Welcome::index');
 
     $routes->get('dashboard', 'Admin\Dashboard::index');
@@ -79,7 +80,7 @@ $routes->group('admin', function ($routes) {
         $routes->get('/', 'Admin\Profile::index');
     });
     // Filter Super user
-    $routes->group('management', function ($routes) {
+    $routes->group('management', ['filter' => 'superuser'], function ($routes) {
         $routes->get('/', 'Admin\AdminManagement::index');
         $routes->post('addadmin', 'Admin\AdminManagement::register');
         $routes->put('setactive/(:any)', 'Admin\AdminManagement::setActive/$1');
