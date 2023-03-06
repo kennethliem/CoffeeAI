@@ -52,7 +52,7 @@ class AdminManagement extends BaseController
                     'role' => htmlspecialchars($this->request->getVar('select_role')),
                     'password_hash' => htmlspecialchars($this->request->getVar('password')),
                     'is_active' => 0,
-                    'updated_by' => "ThrustedDeveloper",
+                    'updated_by' => session()->get('full_name'),
                 ];
                 $this->adminModel->save($newData);
                 session()->setFlashdata('success', 'Data added successfully');

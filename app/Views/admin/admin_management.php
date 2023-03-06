@@ -22,52 +22,54 @@
     </div>
 
     <div class="card-body">
-        <table id="myTable" class="table table-striped" style="width:100%">
-            <thead class="thead-light">
-                <tr>
-                    <th>No</th>
-                    <th>Full Name</th>
-                    <th>Email</th>
-                    <th>Phone Number</th>
-                    <th>Address</th>
-                    <th>Role</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                $no = 1;
-                foreach ($users as $user) : ?>
+        <div class="table-responsive">
+            <table id="myTable" class="table table-responsive table-striped" style="width:100%">
+                <thead class="thead-light">
                     <tr>
-                        <td><?= $no; ?></td>
-                        <td><?= $user['full_name']; ?></td>
-                        <td><?= $user['email']; ?></td>
-                        <td><?= $user['phone']; ?></td>
-                        <td><?= $user['address']; ?></td>
-                        <?php if ($user['role'] == 2) { ?>
-                            <td><span class="badge rounded-pill bg-primary">Admin</span></td>
-                        <?php } else if ($user['role'] == 1) { ?>
-                            <td><span class="badge rounded-pill bg-danger">Super Admin</span></td>
-                        <?php } ?>
-                        <td>
-                            <form action="<?= base_url('admin/management/delete/' . $user['uuid']); ?>" method="POST" class="d-inline">
-                                <?= csrf_field(); ?>
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button type="submit" class="btn btn-danger mb-1" onclick="return confirm('Are you sure?');"><i class="bi bi-trash-fill"></i></button>
-                            </form>
-                            <form action="<?= base_url('admin/management/setactive/' . $user['uuid']); ?>" method="POST" class="d-inline">
-                                <?= csrf_field(); ?>
-                                <input type="hidden" name="_method" value="PUT">
-                                <input type="hidden" name="setactive" value="<?= $user['is_active'] ==  1 ? '0' : '1'; ?>">
-                                <button type="submit" class="btn btn-<?= $user['is_active'] ==  1 ? 'danger' : 'primary'; ?> mb-1"><i class="<?= $user['is_active'] ==  1 ? 'bi bi-stop-circle-fill' : 'bi bi-play-circle-fill'; ?>"></i></button>
-                            </form>
-                        </td>
+                        <th>No</th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Phone Number</th>
+                        <th>Role</th>
+                        <th>Updated By</th>
+                        <th>Actions</th>
                     </tr>
-                <?php
-                    $no = $no + 1;
-                endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php
+                    $no = 1;
+                    foreach ($users as $user) : ?>
+                        <tr>
+                            <td><?= $no; ?></td>
+                            <td><?= $user['full_name']; ?></td>
+                            <td><?= $user['email']; ?></td>
+                            <td><?= $user['phone']; ?></td>
+                            <?php if ($user['role'] == 2) { ?>
+                                <td><span class="badge rounded-pill bg-primary">Admin</span></td>
+                            <?php } else if ($user['role'] == 1) { ?>
+                                <td><span class="badge rounded-pill bg-danger">Super Admin</span></td>
+                            <?php } ?>
+                            <td><?= strtok($user['updated_by'], " "); ?></td>
+                            <td>
+                                <form action="<?= base_url('admin/management/delete/' . $user['uuid']); ?>" method="POST" class="d-inline">
+                                    <?= csrf_field(); ?>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger mb-1" onclick="return confirm('Are you sure?');"><i class="bi bi-trash-fill"></i></button>
+                                </form>
+                                <form action="<?= base_url('admin/management/setactive/' . $user['uuid']); ?>" method="POST" class="d-inline">
+                                    <?= csrf_field(); ?>
+                                    <input type="hidden" name="_method" value="PUT">
+                                    <input type="hidden" name="setactive" value="<?= $user['is_active'] ==  1 ? '0' : '1'; ?>">
+                                    <button type="submit" class="btn btn-<?= $user['is_active'] ==  1 ? 'danger' : 'primary'; ?> mb-1"><i class="<?= $user['is_active'] ==  1 ? 'bi bi-stop-circle-fill' : 'bi bi-play-circle-fill'; ?>"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php
+                        $no = $no + 1;
+                    endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
