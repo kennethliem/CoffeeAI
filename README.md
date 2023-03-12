@@ -1,56 +1,30 @@
-# CodeIgniter 4 Application Starter
+# CoffeeAI - Discover and savor your coffee with ease.
+![image](https://user-images.githubusercontent.com/69246482/224530445-6aff5c5b-b5cd-469d-92b8-2bfd4fceda35.png)
 
-## What is CodeIgniter?
+## App Description
+Our coffee bean detection website is a platform designed to assist coffee enthusiasts in identifying different types of coffee beans. Our team has worked tirelessly to create a website that is both informative and user-friendly. We understand the importance of knowing the exact type of coffee beans used in coffee-making, and have made it our mission to provide accurate and detailed information about each type of coffee bean. Through our website, users can learn about the origins, taste profiles for each type of coffee bean.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+### Note
+<b>For now, this application can only be used for: </b>
+- Arabica Gayo
+- Robusta Gayo
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+<b>In the future we will update so that it can be used for other coffee beans type.</b>
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+### Screenshots
+![AppScreenshots](https://user-images.githubusercontent.com/69246482/224529673-b68d91b4-c21b-4674-b109-7884e7445f8a.png)
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
 
-## Installation & updates
+## Development
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+#### Requirements
+* A Mac or Windows computer.
+* PHP 8.0.25 and Composer
+* MySQL Database
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+#### Server Requirements
 
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
+PHP version 8.0.25 is required, with the following extensions installed:
 
 - [intl](http://php.net/manual/en/intl.requirements.php)
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
@@ -60,3 +34,25 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - json (enabled by default - don't turn it off)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
+#### Third-party Package
+```
+CodeIgniter 4 UUID  : https://github.com/michalsn/codeigniter4-uuid
+ramsey/uuid         : https://github.com/ramsey/uuid
+```
+
+### Clone this App
+
+**Clone**
+```bash
+$ git clone https://github.com/kennethliem/CoffeeAI.git
+```
+
+**Run this project on Local Server**
+* `Open Terminal / Command Promt`
+* `composer update`
+* `php spark migrate`
+* `php spark db:seed AppInformation`
+* `php spark db:seed AdminUsers`
+* `php spark serve`
+* `run localhost:8080 on browser`
