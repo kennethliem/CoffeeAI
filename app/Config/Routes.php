@@ -20,7 +20,6 @@ $routes->setAutoRoute(false);
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -51,6 +50,7 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
 
     $routes->group('information', function ($routes) {
         $routes->get('/', 'Admin\AppInformation::index');
+        $routes->put('update/(:any)', 'Admin\AppInformation::update/$1');
     });
     $routes->group('features', function ($routes) {
         $routes->get('/', 'Admin\AppFeatures::index');
