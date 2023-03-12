@@ -1,5 +1,5 @@
 # CoffeeAI - Discover and savor your coffee with ease.
-![CoffeeAI Logo](https://user-images.githubusercontent.com/69246482/224529928-3adf048c-ce3f-4647-9077-f370c7b2ded7.png)
+![image](https://user-images.githubusercontent.com/69246482/224530445-6aff5c5b-b5cd-469d-92b8-2bfd4fceda35.png)
 
 ## App Description
 Our coffee bean detection website is a platform designed to assist coffee enthusiasts in identifying different types of coffee beans. Our team has worked tirelessly to create a website that is both informative and user-friendly. We understand the importance of knowing the exact type of coffee beans used in coffee-making, and have made it our mission to provide accurate and detailed information about each type of coffee bean. Through our website, users can learn about the origins, taste profiles for each type of coffee bean.
@@ -37,8 +37,8 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 
 #### Third-party Package
 ```
-UUID Package : [tpPackage-UUID](https://github.com/michalsn/codeigniter4-uuid)
-UUID Package : [tpPackage-UUID](https://github.com/ramsey/uuid)
+CodeIgniter 4 UUID  : https://github.com/michalsn/codeigniter4-uuid
+ramsey/uuid         : https://github.com/ramsey/uuid
 ```
 
 ### Clone this App
