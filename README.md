@@ -1,9 +1,8 @@
 # CoffeeAI
 ![CoffeeAI Logo](https://user-images.githubusercontent.com/69246482/224529928-3adf048c-ce3f-4647-9077-f370c7b2ded7.png)
-)
 
 ## App Description
-Our coffee bean detection website is a platform designed to assist coffee enthusiasts in identifying different types of coffee beans. Our team has worked tirelessly to create a website that is both informative and user-friendly. We understand the importance of knowing the exact type of coffee beans used in coffee-making, and have made it our mission to provide accurate and detailed information about each type of coffee bean. Through our website, users can learn about the origins, taste profiles, and brewing techniques for each type of coffee bean.
+Our coffee bean detection website is a platform designed to assist coffee enthusiasts in identifying different types of coffee beans. Our team has worked tirelessly to create a website that is both informative and user-friendly. We understand the importance of knowing the exact type of coffee beans used in coffee-making, and have made it our mission to provide accurate and detailed information about each type of coffee bean. Through our website, users can learn about the origins, taste profiles for each type of coffee bean.
 
 ### Note
 <b>For now, this application can only be used for: </b>
@@ -14,7 +13,6 @@ Our coffee bean detection website is a platform designed to assist coffee enthus
 
 ### Screenshots
 ![AppScreenshots](https://user-images.githubusercontent.com/69246482/224529673-b68d91b4-c21b-4674-b109-7884e7445f8a.png)
-)
 
 
 ## Development
