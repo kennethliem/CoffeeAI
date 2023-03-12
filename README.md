@@ -1,4 +1,4 @@
-# CoffeeAI
+# CoffeeAI - Discover and savor your coffee with ease.
 ![CoffeeAI Logo](https://user-images.githubusercontent.com/69246482/224529928-3adf048c-ce3f-4647-9077-f370c7b2ded7.png)
 
 ## App Description
