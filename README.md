@@ -1,5 +1,5 @@
 # CoffeeAI
-![CoffeeAI Logo](![image](https://user-images.githubusercontent.com/69246482/224529928-3adf048c-ce3f-4647-9077-f370c7b2ded7.png)
+![CoffeeAI Logo](https://user-images.githubusercontent.com/69246482/224529928-3adf048c-ce3f-4647-9077-f370c7b2ded7.png)
 )
 
 ## App Description
@@ -13,7 +13,7 @@ Our coffee bean detection website is a platform designed to assist coffee enthus
 <b>In the future we will update so that it can be used for other coffee beans type.</b>
 
 ### Screenshots
-![AppScreenshots](![image](https://user-images.githubusercontent.com/69246482/224529673-b68d91b4-c21b-4674-b109-7884e7445f8a.png)
+![AppScreenshots](https://user-images.githubusercontent.com/69246482/224529673-b68d91b4-c21b-4674-b109-7884e7445f8a.png)
 )
 
 
@@ -39,8 +39,8 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 
 #### Third-party Package
 ```
-UUID Package : https://github.com/michalsn/codeigniter4-uuid
-UUID Package : https://github.com/ramsey/uuid
+UUID Package : [tpPackage-UUID](https://github.com/michalsn/codeigniter4-uuid)
+UUID Package : [tpPackage-UUID](https://github.com/ramsey/uuid)
 ```
 
 ### Clone this App
