@@ -26,7 +26,7 @@ Our coffee bean detection website is a platform designed to assist coffee enthus
 
 #### Server Requirements
 
-PHP version 8.0.25 and composer is required, with the following extensions installed:
+PHP version 8.0.25 is required, with the following extensions installed:
 
 - [intl](http://php.net/manual/en/intl.requirements.php)
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
