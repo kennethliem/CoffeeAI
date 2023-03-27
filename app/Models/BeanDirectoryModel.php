@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Michalsn\Uuid\UuidModel;
 
-class AppFeaturesModel extends UuidModel
+class BeanDirectoryModel extends UuidModel
 {
-    protected $table = 'app_features';
+    protected $table = 'coffee_beans';
     protected $primaryKey = 'uuid';
     protected $useAutoIncrement = false;
     protected $useTimestamps = true;
-    protected $allowedFields = ['uuid', 'feature_name', 'feature_description', 'icon_url', 'icon_alternate', 'last_modified_by'];
+    protected $allowedFields = ['uuid', 'name', 'type', 'description', 'photo_url', 'photo_alternate', 'last_modified_by'];
 
-    public function getAppFeatures($uuid = false)
+    public function getBeans($uuid = false)
     {
         if ($uuid == false) {
             return $this->findAll();
@@ -22,6 +22,6 @@ class AppFeaturesModel extends UuidModel
 
     public function getFileUrl($uuid)
     {
-        return $this->select('icon_url')->where(['uuid' => $uuid])->first();;
+        return $this->select('photo_url')->where(['uuid' => $uuid])->first();;
     }
 }

@@ -60,7 +60,6 @@
     </div>
 </div>
 
-<!-- Modal Add Admin-->
 <div class="modal fade" id="addFeatures" tabindex="-1" role="dialog" aria-labelledby="addFeaturesLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" id="data_add_admin">
         <div class="modal-content">
@@ -71,7 +70,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action='<?= base_url("admin/features/addfeature"); ?>' method="POST" enctype="multipart/form-data">
+                <form action='<?= base_url("admin/features/add"); ?>' method="POST" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
 
                     <div class="mb-3">

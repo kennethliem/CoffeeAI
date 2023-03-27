@@ -55,12 +55,16 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     $routes->group('features', function ($routes) {
         $routes->get('/', 'Admin\AppFeatures::index');
         $routes->get('detail/(:any)', 'Admin\AppFeatures::detailFeature/$1');
-        $routes->post('addfeature', 'Admin\AppFeatures::addFeature');
-        $routes->put('editfeature/(:any)', 'Admin\AppFeatures::updateFeature/$1');
+        $routes->post('add', 'Admin\AppFeatures::addFeature');
+        $routes->put('edit/(:any)', 'Admin\AppFeatures::updateFeature/$1');
         $routes->delete('delete/(:any)', 'Admin\AppFeatures::deleteFeature/$1');
     });
-    $routes->group('bean', function ($routes) {
+    $routes->group('beans', function ($routes) {
         $routes->get('/', 'Admin\BeanDirectory::index');
+        $routes->get('detail/(:any)', 'Admin\BeanDirectory::detailBean/$1');
+        $routes->post('add', 'Admin\BeanDirectory::addBean');
+        $routes->put('edit/(:any)', 'Admin\BeanDirectory::updateBean/$1');
+        $routes->delete('delete/(:any)', 'Admin\BeanDirectory::deleteBean/$1');
     });
     $routes->group('faq', function ($routes) {
         $routes->get('/', 'Admin\Faq::index');

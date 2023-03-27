@@ -6,22 +6,22 @@
         </button>
     </div>
     <div class="modal-body">
-        <form action='<?= base_url("admin/features/editfeature/" . $feature['uuid']); ?>' method="POST" enctype="multipart/form-data">
+        <form action='<?= base_url("admin/features/edit/" . $feature['uuid']); ?>' method="POST" enctype="multipart/form-data">
             <?= csrf_field(); ?>
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" name="old_thumbnail" value="<?= $feature['icon_url']; ?>">
             <div class="mb-3">
-                <label for="featureName">Nama Game</label>
+                <label for="featureName">Feature name</label>
                 <input type="text" class="form-control" id="featureName" value="<?= (old('featureName')) ? old('featureName') : $feature['feature_name']; ?>" name="featureName" />
             </div>
 
             <div class="mb-3">
-                <label for="featureDesc">Deskripsi Game</label>
+                <label for="featureDesc">Descriptions</label>
                 <textarea class="form-control" id="featureDesc" rows="3" name="featureDesc"><?= (old('featureDesc')) ? old('featureDesc') : $feature['feature_description']; ?></textarea>
             </div>
 
             <div class="mb-3">
-                <label for="iconAlternate">Nama Game</label>
+                <label for="iconAlternate">Icon Alternate</label>
                 <input type="text" class="form-control" id="iconAlternate" value="<?= (old('iconAlternate')) ? old('iconAlternate') : $feature['icon_alternate']; ?>" name="iconAlternate" />
             </div>
 

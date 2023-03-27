@@ -100,7 +100,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="<?= base_url('/admin/bean'); ?>">
+                                <a class="nav-link" href="<?= base_url('/admin/beans'); ?>">
                                     <span class="sidebar-text">Bean Directory</span>
                                 </a>
                             </li>

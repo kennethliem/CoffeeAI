@@ -94,8 +94,8 @@ class AppFeatures extends BaseController
                 if ($fileThumbnail->getError() == 4) {
                     $nameThumbnail = $this->request->getVar('old_thumbnail');
                 } else {
-                    $iconUrl = $this->appFeaturesModel->getIconUrl($uuid);
-                    unlink('assets/images/features/' . $iconUrl['icon_url']);
+                    $fileUrl = $this->appFeaturesModel->getFileUrl($uuid);
+                    unlink('assets/images/features/' . $fileUrl['icon_url']);
 
                     $nameThumbnail = $fileThumbnail->getRandomName();
                     $fileThumbnail->move('assets/images/features', $nameThumbnail);
@@ -118,8 +118,8 @@ class AppFeatures extends BaseController
     {
         if ($this->request->getMethod() == 'delete') {
 
-            $iconUrl = $this->appFeaturesModel->getIconUrl($uuid);
-            unlink('assets/images/features/' . $iconUrl['icon_url']);
+            $fileUrl = $this->appFeaturesModel->getFileUrl($uuid);
+            unlink('assets/images/features/' . $fileUrl['icon_url']);
             $this->appFeaturesModel->delete($uuid);
             session()->setFlashdata('success', 'Data deleted successfuly.');
             return redirect()->to(base_url('admin/features'));
