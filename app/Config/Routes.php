@@ -54,6 +54,10 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('features', function ($routes) {
         $routes->get('/', 'Admin\AppFeatures::index');
+        $routes->get('detail/(:any)', 'Admin\AppFeatures::detailFeature/$1');
+        $routes->post('addfeature', 'Admin\AppFeatures::addFeature');
+        $routes->put('editfeature/(:any)', 'Admin\AppFeatures::updateFeature/$1');
+        $routes->delete('delete/(:any)', 'Admin\AppFeatures::deleteFeature/$1');
     });
     $routes->group('bean', function ($routes) {
         $routes->get('/', 'Admin\BeanDirectory::index');

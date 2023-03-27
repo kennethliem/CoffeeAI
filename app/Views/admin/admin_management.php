@@ -121,8 +121,8 @@
     </div>
 </div>
 
-<div class="modal fade" id="edit_product" tabindex="-1" role="dialog" aria-labelledby="edit_product" aria-hidden="true">
-    <div class="modal-dialog" role="document" id="data_edit_product">
+<div class="modal fade" id="edit_admin" tabindex="-1" role="dialog" aria-labelledby="edit_admin" aria-hidden="true">
+    <div class="modal-dialog" role="document" id="data_edit_admin">
 
     </div>
 </div>
