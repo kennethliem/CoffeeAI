@@ -17,7 +17,7 @@ class Contents extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '100'
             ],
-            'decsription'       => [
+            'description'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255'
             ],

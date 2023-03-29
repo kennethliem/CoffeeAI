@@ -92,6 +92,10 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('contents', function ($routes) {
         $routes->get('/', 'Admin\PageContent::index');
+        $routes->get('detail/(:any)', 'Admin\PageContent::detail/$1');
+        $routes->post('add', 'Admin\PageContent::add');
+        $routes->put('edit/(:any)', 'Admin\PageContent::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\PageContent::delete/$1');
     });
     $routes->group('modelconfig', function ($routes) {
         $routes->get('/', 'Admin\ModelConfig::index');
