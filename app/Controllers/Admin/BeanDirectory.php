@@ -24,7 +24,7 @@ class BeanDirectory extends BaseController
         return view('admin/bean_directory', $data);
     }
 
-    public function detailBean($getData)
+    public function detail($getData)
     {
         $data = [
             'bean' => $this->beanDirectoryModel->getBeans($getData),
@@ -32,7 +32,7 @@ class BeanDirectory extends BaseController
         return view('admin/modal/edit/bean', $data);
     }
 
-    public function addBean()
+    public function add()
     {
         helper(['form']);
         $uuid = service('uuid');
@@ -76,7 +76,7 @@ class BeanDirectory extends BaseController
         }
     }
 
-    public function updateBean($uuid)
+    public function update($uuid)
     {
         helper(['form']);
         if ($this->request->getMethod() == 'put') {
@@ -118,7 +118,7 @@ class BeanDirectory extends BaseController
         }
     }
 
-    public function deleteBean($uuid)
+    public function delete($uuid)
     {
         if ($this->request->getMethod() == 'delete') {
 

@@ -54,20 +54,24 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('features', function ($routes) {
         $routes->get('/', 'Admin\AppFeatures::index');
-        $routes->get('detail/(:any)', 'Admin\AppFeatures::detailFeature/$1');
-        $routes->post('add', 'Admin\AppFeatures::addFeature');
-        $routes->put('edit/(:any)', 'Admin\AppFeatures::updateFeature/$1');
-        $routes->delete('delete/(:any)', 'Admin\AppFeatures::deleteFeature/$1');
+        $routes->get('detail/(:any)', 'Admin\AppFeatures::detail/$1');
+        $routes->post('add', 'Admin\AppFeatures::add');
+        $routes->put('edit/(:any)', 'Admin\AppFeatures::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\AppFeatures::delete/$1');
     });
     $routes->group('beans', function ($routes) {
         $routes->get('/', 'Admin\BeanDirectory::index');
-        $routes->get('detail/(:any)', 'Admin\BeanDirectory::detailBean/$1');
-        $routes->post('add', 'Admin\BeanDirectory::addBean');
-        $routes->put('edit/(:any)', 'Admin\BeanDirectory::updateBean/$1');
-        $routes->delete('delete/(:any)', 'Admin\BeanDirectory::deleteBean/$1');
+        $routes->get('detail/(:any)', 'Admin\BeanDirectory::detail/$1');
+        $routes->post('add', 'Admin\BeanDirectory::add');
+        $routes->put('edit/(:any)', 'Admin\BeanDirectory::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\BeanDirectory::delete/$1');
     });
-    $routes->group('faq', function ($routes) {
+    $routes->group('faqs', function ($routes) {
         $routes->get('/', 'Admin\Faq::index');
+        $routes->get('detail/(:any)', 'Admin\Faq::detail/$1');
+        $routes->post('add', 'Admin\Faq::add');
+        $routes->put('edit/(:any)', 'Admin\Faq::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\Faq::delete/$1');
     });
     $routes->group('sponsors', function ($routes) {
         $routes->get('/', 'Admin\Sponsors::index');

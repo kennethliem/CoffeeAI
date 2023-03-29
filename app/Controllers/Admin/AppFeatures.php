@@ -24,7 +24,7 @@ class AppFeatures extends BaseController
         return view('admin/app_features', $data);
     }
 
-    public function detailFeature($getData)
+    public function detail($getData)
     {
         $data = [
             'feature' => $this->appFeaturesModel->getAppFeatures($getData),
@@ -32,7 +32,7 @@ class AppFeatures extends BaseController
         return view('admin/modal/edit/feature', $data);
     }
 
-    public function addFeature()
+    public function add()
     {
         helper(['form']);
         $uuid = service('uuid');
@@ -74,7 +74,7 @@ class AppFeatures extends BaseController
         }
     }
 
-    public function updateFeature($uuid)
+    public function update($uuid)
     {
         helper(['form']);
         if ($this->request->getMethod() == 'put') {
@@ -114,7 +114,7 @@ class AppFeatures extends BaseController
         }
     }
 
-    public function deleteFeature($uuid)
+    public function delete($uuid)
     {
         if ($this->request->getMethod() == 'delete') {
 
