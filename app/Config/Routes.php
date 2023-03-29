@@ -75,6 +75,10 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('sponsors', function ($routes) {
         $routes->get('/', 'Admin\Sponsors::index');
+        $routes->get('detail/(:any)', 'Admin\Sponsors::detail/$1');
+        $routes->post('add', 'Admin\Sponsors::add');
+        $routes->put('edit/(:any)', 'Admin\Sponsors::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\Sponsors::delete/$1');
     });
     $routes->group('teams', function ($routes) {
         $routes->get('/', 'Admin\Teams::index');

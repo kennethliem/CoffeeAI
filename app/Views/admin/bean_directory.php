@@ -61,7 +61,6 @@
     </div>
 </div>
 
-
 <div class="modal fade" id="add" tabindex="-1" role="dialog" aria-labelledby="addLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document" id="data_add_bean">
         <div class="modal-content">

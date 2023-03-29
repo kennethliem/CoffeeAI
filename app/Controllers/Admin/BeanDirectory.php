@@ -55,7 +55,7 @@ class BeanDirectory extends BaseController
             if (!$this->validate($rules)) {
                 $data['validation'] = $this->validator;
                 session()->setFlashdata('error', $data['validation']->listErrors());
-                return redirect()->to(base_url('admin/features'));
+                return redirect()->to(base_url('admin/beans'));
             } else {
                 $filePhoto = $this->request->getFile('photo');
                 $namePhoto = $filePhoto->getRandomName();
