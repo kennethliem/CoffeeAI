@@ -82,6 +82,10 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('teams', function ($routes) {
         $routes->get('/', 'Admin\Teams::index');
+        $routes->get('detail/(:any)', 'Admin\Teams::detail/$1');
+        $routes->post('add', 'Admin\Teams::add');
+        $routes->put('edit/(:any)', 'Admin\Teams::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\Teams::delete/$1');
     });
     $routes->group('clients', function ($routes) {
         $routes->get('/', 'Admin\ClientInfo::index');
