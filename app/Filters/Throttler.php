@@ -21,8 +21,6 @@ class Throttler implements FilterInterface
     {
         $throttler = Services::throttler();
 
-        // Restrict an IP address to no more than 1 request
-        // per second across the entire site.
         if ($throttler->check(md5($request->getIPAddress()), 50, MINUTE) === false) {
             die(view('/errors/html/error_429', ['url' => current_url()]));
             return Services::response()->setStatusCode(429);
