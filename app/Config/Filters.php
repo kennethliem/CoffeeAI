@@ -30,6 +30,7 @@ class Filters extends BaseConfig
         'superuser' => \App\Filters\SuperUser::class,
 
         'apifilter' => \App\Filters\ApiFilter::class,
+        'throttler' => \App\Filters\Throttler::class,
     ];
 
     /**
@@ -60,7 +61,9 @@ class Filters extends BaseConfig
      * permits any HTTP method to access a controller. Accessing the controller
      * with a method you don’t expect could bypass the filter.
      */
-    public array $methods = [];
+    public array $methods = [
+        'get' => ['throttler'],
+    ];
 
     /**
      * List of filter aliases that should run on any
