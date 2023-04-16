@@ -28,6 +28,8 @@ class Filters extends BaseConfig
         'noauthclient' => \App\Filters\NoAuthClient::class,
 
         'superuser' => \App\Filters\SuperUser::class,
+
+        'apifilter' => \App\Filters\ApiFilter::class,
     ];
 
     /**

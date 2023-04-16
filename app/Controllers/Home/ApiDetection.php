@@ -19,6 +19,7 @@ class ApiDetection extends ResourceController
 
     public function index()
     {
+
         $data['users'] = $this->adminModel->getUsers();
         return $this->respond($data);
     }

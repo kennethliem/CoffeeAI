@@ -43,7 +43,7 @@ $routes->get('/signout', 'Home\Auth::signout');
 $routes->get('/detection', 'Home\Detection::index', ['filter' => 'authenclient']);
 
 // REST API Routes
-$routes->resource('/api/detection', ['controller' => 'Home\ApiDetection']);
+$routes->get('/api/detection', 'Home\ApiDetection', ['filter' => 'apifilter']);
 
 // Authen Admin Routes
 $routes->match(['get', 'post'], '/admin/signin', 'Admin\Auth::index', ['filter' => 'noauthadmin']);
