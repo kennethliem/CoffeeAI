@@ -30,12 +30,15 @@ $routes->setAutoRoute(false);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 
-// Hompage Routes
+// // Hompage Routes
 $routes->get('/', 'Home\Home::index');
 
 $routes->get('/signup', 'Home\Auth::signup');
 $routes->get('/signin', 'Home\Auth::signin');
 $routes->get('/detection', 'Home\Detection::index');
+
+// REST API Routes
+$routes->resource('/api/detection', ['controller' => 'Home\ApiDetection']);
 
 // Authen Routes
 $routes->match(['get', 'post'], '/admin/signin', 'Admin\Auth::index', ['filter' => 'noauthadmin']);
