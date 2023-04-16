@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>FlexStart Bootstrap Template - Index</title>
+  <title><?= $title; ?></title>
   <meta content="" name="description">
 
   <meta content="" name="keywords">
@@ -43,18 +43,29 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#articles">Articles</a></li>
-          <li><a class="nav-link scrollto" href="#coffeetype">Coffee Bean Type</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#faq">FaQ</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          <?php if ($title == 'CoffeeAI - Detection') { ?>
+            <li><a class="signin scrollto" href="<?= base_url('/logout'); ?>">Logout</a></li>
+          <?php
+          } else { ?>
+            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#articles">Articles</a></li>
+            <li><a class="nav-link scrollto" href="#coffeetype">Coffee Bean Type</a></li>
+            <?php if ($sponsors != null) : ?>
+              <li><a class="nav-link scrollto" href="#team">Team</a></li>
+            <?php endif; ?>
+            <li><a class="nav-link scrollto" href="#faq">FaQ</a></li>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            <li><a class="signin scrollto" href="<?= base_url('/signin'); ?>">Scan Bean</a></li>
 
-          <li><a class="signin scrollto" href="<?= base_url('/signin'); ?>">Sign in</a></li>
+            <!-- if session exsist -->
+            <li><a class="signin scrollto" href="<?= base_url('/signout'); ?>">Sign Out</a></li>
+
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          <?php } ?>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
+      <!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
