@@ -110,6 +110,8 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('profile', function ($routes) {
         $routes->get('/', 'Admin\Profile::index');
+        $routes->put('edit', 'Admin\Profile::index');
+        $routes->match(['get', 'post'], 'change-password', 'Admin\Profile::changePassword');
     });
     // Filter Super user
     $routes->group('management', ['filter' => 'superuser'], function ($routes) {
