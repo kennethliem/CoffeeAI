@@ -34,7 +34,7 @@ class AdminManagement extends BaseController
             $rules = [
                 'full_name' => 'required|min_length[3]|max_length[30]',
                 'phone' => 'required|min_length[3]|max_length[30]',
-                'phone' => 'required|min_length[3]|max_length[255]',
+                'address' => 'required|min_length[3]|max_length[255]',
                 'email' => 'required|min_length[6]|max_length[50]|valid_email',
                 'password' => 'required|min_length[6]|max_length[255]',
             ];

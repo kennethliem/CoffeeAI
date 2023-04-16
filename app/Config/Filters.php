@@ -23,6 +23,10 @@ class Filters extends BaseConfig
         'secureheaders' => SecureHeaders::class,
         'authenadmin' => \App\Filters\AuthenAdmin::class,
         'noauthadmin' => \App\Filters\NoAuthAdmin::class,
+
+        'authenclient' => \App\Filters\AuthenClient::class,
+        'noauthclient' => \App\Filters\NoAuthClient::class,
+
         'superuser' => \App\Filters\SuperUser::class,
     ];
 

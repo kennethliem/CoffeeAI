@@ -7,7 +7,6 @@
 
   <title><?= $title; ?></title>
   <meta content="" name="description">
-
   <meta content="" name="keywords">
 
   <!-- Favicons -->
@@ -36,17 +35,14 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="<?= base_url('/'); ?>" class="logo d-flex align-items-center">
         <img src="<?= base_url('home_assets/img/logo/logo.png'); ?>" alt="">
-        <span>CoffeeAI</span>
+        <span><?= $information[0]['app_name']; ?></span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <?php if ($title == 'CoffeeAI - Detection') { ?>
-            <li><a class="signin scrollto" href="<?= base_url('/logout'); ?>">Logout</a></li>
-          <?php
-          } else { ?>
+          <?php if ($title != 'CoffeeAI - Detection') { ?>
             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
             <li><a class="nav-link scrollto" href="#about">About</a></li>
             <li><a class="nav-link scrollto" href="#articles">Articles</a></li>
@@ -56,13 +52,12 @@
             <?php endif; ?>
             <li><a class="nav-link scrollto" href="#faq">FaQ</a></li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-            <li><a class="signin scrollto" href="<?= base_url('/signin'); ?>">Scan Bean</a></li>
-
-            <!-- if session exsist -->
-            <li><a class="signin scrollto" href="<?= base_url('/signout'); ?>">Sign Out</a></li>
-
+            <li><a class="signin scrollto" href="<?= base_url('/detection'); ?>">Detection</a></li>
             <i class="bi bi-list mobile-nav-toggle"></i>
           <?php } ?>
+          <?php if (session()->get('fullname') != null) : ?>
+            <li><a class="signin scrollto" href="<?= base_url('/signout'); ?>">Sign Out</a></li>
+          <?php endif; ?>
         </ul>
       </nav>
       <!-- .navbar -->
