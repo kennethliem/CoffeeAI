@@ -4,31 +4,51 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-sm-12">
-                <div class="card text-center mt-5">
-                    <div class="card-header">
-                        Coffee Detection
-                    </div>
-                    <div class="card-body">
-                        <div class="row justify-content-center mb-2">
-                            <div>
-                                <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#apiKey">
-                                    See your API Token
-                                </button>
+                <form>
+                    <div class="card text-center mt-5">
+                        <div class="card-header">
+                            Coffee Detection
+                        </div>
+                        <div class="card-body">
+                            <div class="row justify-content-center mb-2">
+                                <div>
+                                    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#apiKey">
+                                        See your API Token
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center">
+
+                                <img src="<?= base_url('home_assets/img/empty.png'); ?>" id="uploaded_image" alt="uploaded_image" height="350px">
                             </div>
                         </div>
-                        <div class="row">
-                            <img src="home_assets/img/about.jpg" alt="uploaded_image" height="350px">
+                        <div class="card-footer text-muted">
+                            <input type="file" onchange="readURL(this);" />
+                            <a href="#" class="btn btn-success">Detect</a>
                         </div>
                     </div>
-                    <div class="card-footer text-muted">
-                        <a href="#" class="btn btn-primary">Upload Images</a>
-                        <a href="#" class="btn btn-success">Detect</a>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 </section>
+
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#uploaded_image')
+                    .attr('src', e.target.result)
+                    .width(350)
+                    .height(350);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 
 
 <div class="modal fade" id="apiKey" tabindex="-1" role="dialog" aria-labelledby="apiKeyLabel" aria-hidden="true">

@@ -17,6 +17,10 @@ class CoffeeBeans extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '100'
             ],
+            'class_name'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '100'
+            ],
             'type'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255'

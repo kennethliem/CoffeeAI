@@ -10,7 +10,7 @@ class BeanDirectoryModel extends UuidModel
     protected $primaryKey = 'uuid';
     protected $useAutoIncrement = false;
     protected $useTimestamps = true;
-    protected $allowedFields = ['uuid', 'name', 'type', 'description', 'photo_url', 'photo_alternate', 'last_modified_by'];
+    protected $allowedFields = ['uuid', 'name', 'class_name', 'type', 'description', 'photo_url', 'photo_alternate', 'last_modified_by'];
 
     public function getBeans($uuid = false)
     {

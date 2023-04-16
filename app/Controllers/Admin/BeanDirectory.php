@@ -39,6 +39,7 @@ class BeanDirectory extends BaseController
         if ($this->request->getMethod() == 'post') {
             $rules = [
                 'beanName' => 'required',
+                'className' => 'required',
                 'beanDesc' => 'required',
                 'beanType' => 'required',
                 'photoAlternate' => 'required',
@@ -64,6 +65,7 @@ class BeanDirectory extends BaseController
                 $this->beanDirectoryModel->save([
                     'uuid' => $uuid->uuid4()->toString(),
                     'name' => htmlspecialchars($this->request->getVar('beanName')),
+                    'class_name' => htmlspecialchars($this->request->getVar('className')),
                     'type' => htmlspecialchars($this->request->getVar('beanType')),
                     'description' => htmlspecialchars($this->request->getVar('beanDesc')),
                     'photo_url' => $namePhoto,
@@ -83,6 +85,7 @@ class BeanDirectory extends BaseController
 
             $rules = [
                 'beanName' => 'required',
+                'className' => 'required',
                 'beanDesc' => 'required',
                 'beanType' => 'required',
                 'photoAlternate' => 'required',
@@ -106,6 +109,7 @@ class BeanDirectory extends BaseController
                 $this->beanDirectoryModel->save([
                     'uuid' => $uuid,
                     'name' => htmlspecialchars($this->request->getVar('beanName')),
+                    'class_name' => htmlspecialchars($this->request->getVar('className')),
                     'type' => htmlspecialchars($this->request->getVar('beanType')),
                     'description' => htmlspecialchars($this->request->getVar('beanDesc')),
                     'photo_url' => $namePhoto,

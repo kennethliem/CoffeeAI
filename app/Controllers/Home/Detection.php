@@ -31,4 +31,17 @@ class Detection extends BaseController
         ];
         return view('homepage/detection', $data);
     }
+
+    public function detect() // Under development
+    {
+        $client = new \CodeIgniter\HTTP\CURLRequest(
+            new \Config\App(),
+            new \CodeIgniter\HTTP\URI(),
+            new \CodeIgniter\HTTP\Response(new \Config\App()),
+        );
+
+        $response = $client->request('GET', 'https://api.publicapis.org/entries');
+        dd($response->getBody());
+        return view('homepage/detection');
+    }
 }

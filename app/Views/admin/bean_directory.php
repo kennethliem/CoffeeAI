@@ -25,6 +25,7 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
+                        <th>Class Name</th>
                         <th>Type</th>
                         <th>Descriptions</th>
                         <th>Photo</th>
@@ -39,6 +40,7 @@
                         <tr>
                             <td><?= $i; ?></td>
                             <td><?= $bean['name']; ?></td>
+                            <td><?= $bean['class_name']; ?></td>
                             <td><?= $bean['type']; ?></td>
                             <td><?= $bean['description']; ?></td>
                             <td><img src="<?= base_url('assets/images/beans/' . $bean['photo_url']); ?>" width="100px" height="100px" alt="<?= $bean['photo_alternate']; ?>"></td>
@@ -77,6 +79,10 @@
                     <div class="mb-3">
                         <label for="beanName">Bean Name</label>
                         <input type="text" class="form-control" id="beanName" name="beanName">
+                    </div>
+                    <div class="mb-3">
+                        <label for="className">DL Model Class</label>
+                        <input type="text" class="form-control" id="className" name="className">
                     </div>
                     <div class="mb-3">
                         <label for="beanType">Bean Type</label>

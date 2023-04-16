@@ -8,7 +8,6 @@ use Firebase\JWT\JWT;
 
 class Auth extends BaseController
 {
-
     protected $clientsModel;
     public function __construct()
     {
@@ -36,19 +35,17 @@ class Auth extends BaseController
                 session()->setFlashdata('error', $data['validation']->listErrors());
                 return redirect()->to(base_url('/signin'))->withInput();
             } else {
-
                 $key = getenv('JWT_SECRET');
-                $iat = time(); // current timestamp value
+                $iat = time();
                 $exp = $iat + 3600;
 
                 $payload = array(
                     "iss" => "COFFEEAI",
                     "sub" => "Api for detection feature",
-                    "iat" => $iat, //Time the JWT issued at
-                    "exp" => $exp, // Expiration time of token
+                    "iat" => $iat,
+                    "exp" => $exp,
                     "email" => $this->request->getVar('email'),
                 );
-
                 $jwt = JWT::encode($payload, $key, 'HS256');
                 $user = $this->clientsModel->where('email', $this->request->getVar('email'))->first();
                 $data = [

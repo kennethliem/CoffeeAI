@@ -17,6 +17,11 @@
             </div>
 
             <div class="mb-3">
+                <label for="className">DL Model Class</label>
+                <input type="text" class="form-control" id="className" value="<?= (old('className')) ? old('className') : $bean['class_name']; ?>" name="className" />
+            </div>
+
+            <div class="mb-3">
                 <label for="beanType">Bean Type</label>
                 <input type="text" class="form-control" id="beanType" value="<?= (old('beanType')) ? old('beanType') : $bean['type']; ?>" name="beanType" />
             </div>
