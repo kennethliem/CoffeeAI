@@ -4,6 +4,7 @@ namespace App\Controllers\Home;
 
 use App\Controllers\BaseController;
 use App\Models\ClientsModel;
+use Firebase\JWT\JWT;
 
 class Auth extends BaseController
 {
@@ -35,7 +36,25 @@ class Auth extends BaseController
                 session()->setFlashdata('error', $data['validation']->listErrors());
                 return redirect()->to(base_url('/signin'))->withInput();
             } else {
+
+                $key = getenv('JWT_SECRET');
+                $iat = time(); // current timestamp value
+                $exp = $iat + 3600;
+
+                $payload = array(
+                    "iss" => "COFFEEAI",
+                    "sub" => "Api for detection feature",
+                    "iat" => $iat, //Time the JWT issued at
+                    "exp" => $exp, // Expiration time of token
+                    "email" => $this->request->getVar('email'),
+                );
+
+                $jwt = JWT::encode($payload, $key, 'HS256');
                 $user = $this->clientsModel->where('email', $this->request->getVar('email'))->first();
+                $data = [
+                    'token' => $jwt,
+                ];
+                $user = $user + $data;
                 $this->setUserSession($user);
                 return redirect()->to(base_url('/detection'));
             }
@@ -49,6 +68,8 @@ class Auth extends BaseController
         $data = [
             'uuid' => $user['uuid'],
             'fullname' => $user['fullname'],
+            'email' => $user['email'],
+            'token' => $user['token'],
             'isLoggedInClient' => true,
         ];
         session()->set($data);
