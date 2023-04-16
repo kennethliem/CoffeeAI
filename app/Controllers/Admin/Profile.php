@@ -69,7 +69,7 @@ class Profile extends BaseController
                     } else {
                         $newData = [
                             'uuid' => session()->get('uuid'),
-                            'password' => password_hash($this->request->getVar('newPassword'), PASSWORD_DEFAULT),
+                            'password_hash' => password_hash($this->request->getVar('newPassword'), PASSWORD_DEFAULT),
                         ];
                         $this->adminModel->save($newData);
                         session()->setFlashdata('success', 'Password berhasil diubah');
