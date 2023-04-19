@@ -4,7 +4,9 @@ namespace App\Controllers\Home;
 
 use App\Controllers\BaseController;
 use App\Models\ClientsModel;
+use Exception;
 use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class Auth extends BaseController
 {
@@ -16,6 +18,7 @@ class Auth extends BaseController
 
     public function signin()
     {
+        $key = getenv('JWT_SECRET');
         $data = [
             'title' => 'User Login - CoffeeAI',
             'validation' => \Config\Services::validation(),
@@ -35,25 +38,70 @@ class Auth extends BaseController
                 session()->setFlashdata('error', $data['validation']->listErrors());
                 return redirect()->to(base_url('/signin'))->withInput();
             } else {
-                $key = getenv('JWT_SECRET');
-                $iat = time();
-                $exp = $iat + 2.592e+6;
+                $email = $this->request->getVar('email');
+                $user = $this->clientsModel->where('email', $email)->first();
+                if ($user['token'] == null) {
+                    $user['token'] = $this->getUserToken($email, $key);
+                    $this->clientsModel->save([
+                        'uuid' => $user['uuid'],
+                        'token' => $user['token']
+                    ]);
+                }
 
-                $payload = array(
-                    "iss" => "COFFEEAI",
-                    "sub" => "Api for detection feature",
-                    "iat" => $iat,
-                    "exp" => $exp,
-                    "email" => $this->request->getVar('email'),
-                );
-                $jwt = JWT::encode($payload, $key, 'HS256');
-                $user = $this->clientsModel->where('email', $this->request->getVar('email'))->first();
-                $user['token'] = $jwt;
                 $this->setUserSession($user);
                 return redirect()->to(base_url('/detection'));
             }
         } else {
             return view('auth/user_signin', $data);
+        }
+    }
+
+    public function regenerateToken()
+    {
+        $key = getenv('JWT_SECRET');
+        $newToken = $this->getUserToken(session()->get('email'), $key);
+        $this->clientsModel->save([
+            'uuid' => session()->get('uuid'),
+            'token' => $newToken
+        ]);
+        session()->set([
+            'token' => $newToken
+        ]);
+        session()->setFlashdata('success', 'Token has been regenerated');
+        return redirect()->to(base_url('/detection'));
+    }
+
+    private function getUserToken($email, $key)
+    {
+        $iat = time();
+        $exp = $iat + 604800;
+        $payload = array(
+            "iss" => "CoffeeAI-BackendSystem",
+            "iat" => $iat,
+            "exp" => $exp,
+            "email" => $email,
+        );
+        return JWT::encode($payload, $key, 'HS256');
+    }
+
+    public function getTokenDetail()
+    {
+        $key = getenv('JWT_SECRET');
+        helper('time');
+        $data = [
+            'tokenExpired' => secondsToTime($this->getTokenExpTime(session()->get('token'), $key))
+        ];
+        return view('homepage/modal/TokenPopUp', $data);
+    }
+
+    public function getTokenExpTime($token, $key)
+    {
+        try {
+            $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            $decoded = json_decode(json_encode($decoded), true);
+            return $decoded['exp'] - time();
+        } catch (Exception $ex) {
+            return "Your Token Has been expired, please regenerate.";
         }
     }
 

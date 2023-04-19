@@ -10,7 +10,7 @@ class ClientsModel extends UuidModel
     protected $primaryKey = 'uuid';
     protected $useAutoIncrement = false;
     protected $useTimestamps = true;
-    protected $allowedFields = ['uuid', 'email', 'fullname', 'password_hash', 'token_hash', 'token_exp'];
+    protected $allowedFields = ['uuid', 'email', 'fullname', 'password_hash', 'token'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpddate = ['beforeUpdate'];
 
@@ -32,16 +32,6 @@ class ClientsModel extends UuidModel
     {
         $data = $this->passwordHash($data);
         return $data;
-    }
-
-    public function verifyEmail($email)
-    {
-        return $this->where(['email' => $email])->first();
-    }
-
-    public function verifyToken($token)
-    {
-        return $this->where(['token' => $token])->first();
     }
 
     protected function passwordHash(array $data)

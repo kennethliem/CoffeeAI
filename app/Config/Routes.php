@@ -36,6 +36,8 @@ $routes->get('/', 'Home\Home::index');
 // Authen Clients Routes
 $routes->match(['get', 'post'], '/signup', 'Home\Auth::signup', ['filter' => 'noauthclient']);
 $routes->match(['get', 'post'], '/signin', 'Home\Auth::signin', ['filter' => 'noauthclient']);
+$routes->get('/tokenDetail', 'Home\Auth::getTokenDetail', ['filter' => 'authenclient', 'throttler']);
+$routes->post('/regenerate', 'Home\Auth::regenerateToken', ['filter' => 'authenclient', 'throttler']);
 $routes->get('/signout', 'Home\Auth::signout');
 
 // Detection Routes

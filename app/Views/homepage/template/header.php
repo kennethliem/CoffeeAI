@@ -41,8 +41,8 @@
         <img src="<?= base_url('home_assets/img/logo/logo.png'); ?>" alt="">
         <span><?= $information[0]['app_name']; ?></span>
       </a>
-
       <nav id="navbar" class="navbar">
+        <i class="bi bi-list mobile-nav-toggle"></i>
         <ul>
           <?php if ($title != 'CoffeeAI - Detection') { ?>
             <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -54,13 +54,19 @@
             <?php endif; ?>
             <li><a class="nav-link scrollto" href="#faq">FaQ</a></li>
             <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-            <li><a class="signin scrollto" href="<?= base_url('/detection'); ?>">Detection</a></li>
-            <i class="bi bi-list mobile-nav-toggle"></i>
           <?php } ?>
           <?php if (session()->get('fullname') != null) : ?>
-            <li><a class="signin scrollto" href="<?= base_url('/signout'); ?>">Sign Out</a></li>
+            <li class="dropdown"><a><span><?= session()->get('fullname'); ?></span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="<?= base_url('/signout'); ?>">Sign out</a></li>
+              </ul>
+            </li>
           <?php endif; ?>
+          <?php if ($title != 'CoffeeAI - Detection') { ?>
+            <li><a class="signin scrollto" href="<?= base_url('/detection'); ?>">Scan</a></li>
+          <?php } ?>
         </ul>
+
       </nav>
       <!-- .navbar -->
 

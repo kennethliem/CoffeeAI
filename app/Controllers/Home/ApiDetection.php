@@ -62,6 +62,7 @@ class ApiDetection extends ResourceController
                     unlink(WRITEPATH . 'images/uploads/' . $fileName);
                     return $this->respond($result);
                 } else {
+                    unlink(WRITEPATH . 'images/uploads/' . $fileName);
                     return $this->respond($this->getError("Internal server error, please try again", $decoded['email'], $requestCode));
                 }
             } else {
