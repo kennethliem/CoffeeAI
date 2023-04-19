@@ -22,6 +22,7 @@ class Detection extends BaseController
 
     public function index()
     {
+        helper(['form']);
         $data = [
             'title' => 'CoffeeAI - Detection',
             'information' => $this->appInfoModel->getAppInformation(),
@@ -29,8 +30,6 @@ class Detection extends BaseController
         ];
 
         if ($this->request->getMethod() == 'post') {
-            helper(['form']);
-
             $file = $this->request->getFile('image');
             $fileName = $file->getRandomName();
             if ($file->isValid() && !$file->hasMoved()) {
@@ -62,9 +61,10 @@ class Detection extends BaseController
                         'through' => 'WEB'
                     ]);
                     unlink(WRITEPATH . 'images/uploads/' . $fileName);
-                    session()->setFlashdata('success', $result);
+                    session()->setFlashdata('coffeeType', $result);
                     return redirect()->to(base_url('/detection'))->withInput();
                 } else {
+                    unlink(WRITEPATH . 'images/uploads/' . $fileName);
                     session()->setFlashdata('error', $this->getError('Internal server error, please try again', session()->get('email'), $requestCode));
                     return redirect()->to(base_url('/detection'))->withInput();
                 }
@@ -76,6 +76,7 @@ class Detection extends BaseController
             return view('homepage/detection', $data);
         }
     }
+
 
     public function getError($message, $email = "-", $code = 001)
     {

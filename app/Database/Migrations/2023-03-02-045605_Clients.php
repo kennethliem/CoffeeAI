@@ -25,6 +25,10 @@ class Clients extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '255'
             ],
+            'token'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '255'
+            ],
             'created_at DATETIME DEFAULT CURRENT_TIMESTAMP',
             'updated_at'       => [
                 'type'           => 'DATETIME'
