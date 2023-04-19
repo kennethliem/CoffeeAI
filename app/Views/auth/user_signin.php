@@ -16,8 +16,22 @@
 					<div class="text-center text-md-center mb-4 mt-md-0">
 						<h1 class="mb-0 h3">Sign in to CoffeeAI</h1>
 					</div>
-					<form action="#" class="mt-4">
+					<form action="<?= base_url('/signin'); ?>" class="mt-4" method="POST">
+
+						<?= csrf_field(); ?>
 						<!-- Form -->
+						<?php if (session()->getFlashdata('error')) : ?>
+							<div class="alert alert-danger" role="alert">
+								<p><?= session()->getFlashdata('error'); ?></p>
+							</div>
+						<?php endif; ?>
+
+						<?php if (session()->getFlashdata('success')) : ?>
+							<div class="alert alert-success" role="alert">
+								<p><?= session()->getFlashdata('success'); ?></p>
+							</div>
+						<?php endif; ?>
+
 						<div class="form-group mb-4">
 							<label for="email">Your Email</label>
 							<div class="input-group">
@@ -27,7 +41,7 @@
 										<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
 									</svg>
 								</span>
-								<input type="email" class="form-control" placeholder="example@company.com" id="email" autofocus required>
+								<input type="email" class="form-control" placeholder="example@company.com" id="email" name="email" autofocus required>
 							</div>
 						</div>
 						<!-- End of Form -->
@@ -41,19 +55,21 @@
 											<path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"></path>
 										</svg>
 									</span>
-									<input type="password" placeholder="Password" class="form-control" id="password" required>
+									<input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
 								</div>
 							</div>
 							<!-- End of Form -->
-							<div class="d-flex justify-content-between align-items-top mb-4">
-
-								<div><a href="./forgot-password.html" class="small text-right">Lost password?</a></div>
-							</div>
 						</div>
 						<div class="d-grid">
 							<button type="submit" class="btn btn-gray-800">Sign in</button>
 						</div>
 					</form>
+					<div class="d-flex justify-content-center align-items-center mt-4">
+						<span class="fw-normal">
+							Don't have an account yet?
+							<a href="<?= base_url('/signup'); ?>" class="fw-bold">Create here</a>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>

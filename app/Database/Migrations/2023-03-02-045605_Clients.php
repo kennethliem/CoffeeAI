@@ -17,24 +17,17 @@ class Clients extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '100'
             ],
+            'fullname'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '100'
+            ],
             'password_hash'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255'
             ],
-            'token_hash'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255'
-            ],
-            'token_exp'       => [
-                'type'           => 'DATE'
-            ],
             'created_at DATETIME DEFAULT CURRENT_TIMESTAMP',
             'updated_at'       => [
                 'type'           => 'DATETIME'
-            ],
-            'is_active'       => [
-                'type'           => 'INT',
-                'constraint'     => 1
             ],
         ]);
 

@@ -17,7 +17,7 @@ class AppFeatures extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '100'
             ],
-            'feature_decsription'       => [
+            'feature_description'       => [
                 'type'           => 'VARCHAR',
                 'constraint'     => '255'
             ],

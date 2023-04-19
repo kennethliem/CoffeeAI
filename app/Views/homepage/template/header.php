@@ -5,9 +5,8 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>FlexStart Bootstrap Template - Index</title>
+  <title><?= $title; ?></title>
   <meta content="" name="description">
-
   <meta content="" name="keywords">
 
   <!-- Favicons -->
@@ -28,6 +27,8 @@
   <!-- Template Main CSS File -->
   <link href="home_assets/css/style.css" rel="stylesheet">
 
+  <script src="<?= base_url('admin_assets\vendor\jquery\jquery.min.js'); ?>"></script>
+
 </head>
 
 <body>
@@ -36,25 +37,32 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="<?= base_url('/'); ?>" class="logo d-flex align-items-center">
         <img src="<?= base_url('home_assets/img/logo/logo.png'); ?>" alt="">
-        <span>CoffeeAI</span>
+        <span><?= $information[0]['app_name']; ?></span>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li><a class="nav-link scrollto" href="#articles">Articles</a></li>
-          <li><a class="nav-link scrollto" href="#coffeetype">Coffee Bean Type</a></li>
-          <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li><a class="nav-link scrollto" href="#faq">FaQ</a></li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-
-          <li><a class="signin scrollto" href="<?= base_url('/signin'); ?>">Sign in</a></li>
+          <?php if ($title != 'CoffeeAI - Detection') { ?>
+            <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+            <li><a class="nav-link scrollto" href="#about">About</a></li>
+            <li><a class="nav-link scrollto" href="#articles">Articles</a></li>
+            <li><a class="nav-link scrollto" href="#coffeetype">Coffee Bean Type</a></li>
+            <?php if ($sponsors != null) : ?>
+              <li><a class="nav-link scrollto" href="#team">Team</a></li>
+            <?php endif; ?>
+            <li><a class="nav-link scrollto" href="#faq">FaQ</a></li>
+            <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+            <li><a class="signin scrollto" href="<?= base_url('/detection'); ?>">Detection</a></li>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+          <?php } ?>
+          <?php if (session()->get('fullname') != null) : ?>
+            <li><a class="signin scrollto" href="<?= base_url('/signout'); ?>">Sign Out</a></li>
+          <?php endif; ?>
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+      </nav>
+      <!-- .navbar -->
 
     </div>
   </header><!-- End Header -->

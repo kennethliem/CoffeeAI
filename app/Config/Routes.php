@@ -33,11 +33,18 @@ $routes->setAutoRoute(false);
 // Hompage Routes
 $routes->get('/', 'Home\Home::index');
 
-$routes->get('/signup', 'Home\Auth::signup');
-$routes->get('/signin', 'Home\Auth::signin');
-$routes->get('/detection', 'Home\Detection::index');
+// Authen Clients Routes
+$routes->match(['get', 'post'], '/signup', 'Home\Auth::signup', ['filter' => 'noauthclient']);
+$routes->match(['get', 'post'], '/signin', 'Home\Auth::signin', ['filter' => 'noauthclient']);
+$routes->get('/signout', 'Home\Auth::signout');
 
-// Authen Routes
+// Detection Routes
+$routes->match(['get', 'post'], '/detection', 'Home\Detection::index', ['filter' => 'authenclient', 'throttler']);
+
+// REST API Routes
+$routes->post('/api/detection', 'Home\ApiDetection', ['filter' => 'apifilter', 'throttler']);
+
+// Authen Admin Routes
 $routes->match(['get', 'post'], '/admin/signin', 'Admin\Auth::index', ['filter' => 'noauthadmin']);
 $routes->get('/admin/signout', 'Admin\Auth::signout');
 
@@ -54,30 +61,56 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('features', function ($routes) {
         $routes->get('/', 'Admin\AppFeatures::index');
+        $routes->get('detail/(:any)', 'Admin\AppFeatures::detail/$1');
+        $routes->post('add', 'Admin\AppFeatures::add');
+        $routes->put('edit/(:any)', 'Admin\AppFeatures::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\AppFeatures::delete/$1');
     });
-    $routes->group('bean', function ($routes) {
+    $routes->group('beans', function ($routes) {
         $routes->get('/', 'Admin\BeanDirectory::index');
+        $routes->get('detail/(:any)', 'Admin\BeanDirectory::detail/$1');
+        $routes->post('add', 'Admin\BeanDirectory::add');
+        $routes->put('edit/(:any)', 'Admin\BeanDirectory::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\BeanDirectory::delete/$1');
     });
-    $routes->group('faq', function ($routes) {
+    $routes->group('faqs', function ($routes) {
         $routes->get('/', 'Admin\Faq::index');
+        $routes->get('detail/(:any)', 'Admin\Faq::detail/$1');
+        $routes->post('add', 'Admin\Faq::add');
+        $routes->put('edit/(:any)', 'Admin\Faq::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\Faq::delete/$1');
     });
     $routes->group('sponsors', function ($routes) {
         $routes->get('/', 'Admin\Sponsors::index');
+        $routes->get('detail/(:any)', 'Admin\Sponsors::detail/$1');
+        $routes->post('add', 'Admin\Sponsors::add');
+        $routes->put('edit/(:any)', 'Admin\Sponsors::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\Sponsors::delete/$1');
     });
     $routes->group('teams', function ($routes) {
         $routes->get('/', 'Admin\Teams::index');
+        $routes->get('detail/(:any)', 'Admin\Teams::detail/$1');
+        $routes->post('add', 'Admin\Teams::add');
+        $routes->put('edit/(:any)', 'Admin\Teams::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\Teams::delete/$1');
     });
     $routes->group('clients', function ($routes) {
         $routes->get('/', 'Admin\ClientInfo::index');
     });
     $routes->group('contents', function ($routes) {
         $routes->get('/', 'Admin\PageContent::index');
+        $routes->get('detail/(:any)', 'Admin\PageContent::detail/$1');
+        $routes->post('add', 'Admin\PageContent::add');
+        $routes->put('edit/(:any)', 'Admin\PageContent::update/$1');
+        $routes->delete('delete/(:any)', 'Admin\PageContent::delete/$1');
     });
     $routes->group('modelconfig', function ($routes) {
         $routes->get('/', 'Admin\ModelConfig::index');
     });
     $routes->group('profile', function ($routes) {
         $routes->get('/', 'Admin\Profile::index');
+        $routes->put('edit', 'Admin\Profile::index');
+        $routes->match(['get', 'post'], 'change-password', 'Admin\Profile::changePassword');
     });
     // Filter Super user
     $routes->group('management', ['filter' => 'superuser'], function ($routes) {
@@ -85,9 +118,6 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
         $routes->post('addadmin', 'Admin\AdminManagement::register');
         $routes->put('setactive/(:any)', 'Admin\AdminManagement::setActive/$1');
         $routes->delete('delete/(:any)', 'Admin\AdminManagement::delete/$1');
-    });
-    $routes->group('documentation', function ($routes) {
-        $routes->get('/', 'Admin\Documentation::index');
     });
 });
 

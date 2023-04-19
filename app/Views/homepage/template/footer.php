@@ -8,39 +8,23 @@
       <div class="row gy-4 justify-content-between">
 
         <div class="col-lg-5 col-md-12 footer-info">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href="<?= base_url('/'); ?>" class="logo d-flex align-items-center">
             <img src="<?= base_url('home_assets/img/logo/logo.png'); ?>" alt="">
-            <span>Coffee AI</span>
+            <span><?= $information[0]['app_name']; ?></span>
           </a>
-          <p>We understand the importance of knowing the exact type of coffee beans used in coffee-making, and have made it our mission to provide accurate and detailed information about each type of coffee bean. Through our website, users can learn about the origins, taste profiles, and brewing techniques for each type of coffee bean.</p>
+          <p><?= $information[0]['app_description']; ?></p>
           <div class="social-links mt-3">
-            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
             <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
             <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
-
-
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>
-            A108 Adam Street <br>
-            New York, NY 535022<br>
-            United States <br><br>
-            <strong>Phone:</strong> +1 5589 55488 55<br>
-            <strong>Email:</strong> info@example.com<br>
-          </p>
-
-        </div>
-
       </div>
     </div>
   </div>
 
   <div class="container">
     <div class="copyright">
-      &copy; Copyright <strong><span>CoffeeAI 2023</span></strong>. All Rights Reserved
+      &copy; Copyright <strong><span><?= $information[0]['app_copyright']; ?></span></strong>. All Rights Reserved
     </div>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
