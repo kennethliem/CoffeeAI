@@ -37,7 +37,7 @@ class Auth extends BaseController
             } else {
                 $key = getenv('JWT_SECRET');
                 $iat = time();
-                $exp = $iat + 3600;
+                $exp = $iat + 2.592e+6;
 
                 $payload = array(
                     "iss" => "COFFEEAI",

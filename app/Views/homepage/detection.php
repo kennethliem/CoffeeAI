@@ -59,7 +59,7 @@
             </div>
             <div class="modal-body">
                 <div class="form-floating">
-                    <textarea class="form-control" id="" style="height: 150px; resize: none;" disabled><?= session()->get('token'); ?></textarea>
+                    <textarea class="form-control" id="" style="height: 180px; resize: none;" disabled><?= session()->get('token'); ?></textarea>
                 </div>
             </div>
             <div class="modal-footer">
