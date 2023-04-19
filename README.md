@@ -19,6 +19,36 @@ Our coffee bean detection website is a platform designed to assist coffee enthus
 
 ![AppScreenshots](https://user-images.githubusercontent.com/69246482/224529673-b68d91b4-c21b-4674-b109-7884e7445f8a.png)
 
+### Detection API
+
+- Endpoint : `/api/detection`
+- HTTP Method : `POST`
+- Request Header :
+  - Authorization : `Bearer {token}`
+- Request Body :
+
+  - `image` as `file`
+
+- Response Body (Success) :
+
+```
+{
+    "coffeeType": "Robusta Gayo",
+    "error": false,
+    "message": "Success"
+}
+```
+
+- Response Body (Fail) :
+
+```
+{
+    "coffeeType": null,
+    "error": true,
+    "message": {error message}
+}
+```
+
 ## Development
 
 #### Requirements
@@ -45,6 +75,7 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 ```
 CodeIgniter 4 UUID  : https://github.com/michalsn/codeigniter4-uuid
 ramsey/uuid         : https://github.com/ramsey/uuid
+firebase/php-jwt    : https://github.com/firebase/php-jwt
 ```
 
 ### Clone this App
