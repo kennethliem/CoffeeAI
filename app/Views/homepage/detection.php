@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6 col-sm-12">
-                <form>
+                <form action='<?= base_url("/detection"); ?>' method="POST" enctype="multipart/form-data">
                     <div class="card text-center mt-5">
                         <div class="card-header">
                             Coffee Detection
@@ -18,13 +18,12 @@
                                 </div>
                             </div>
                             <div class="row justify-content-center">
-
                                 <img src="<?= base_url('home_assets/img/empty.png'); ?>" id="uploaded_image" alt="uploaded_image" height="350px">
                             </div>
                         </div>
                         <div class="card-footer text-muted">
-                            <input type="file" onchange="readURL(this);" />
-                            <a href="#" class="btn btn-success">Detect</a>
+                            <input type="file" onchange="readURL(this);" class="form-control-file" id="image" name="image" />
+                            <button type="submit" class="btn btn-success">Detect</button>
                         </div>
                     </div>
                 </form>
@@ -37,14 +36,12 @@
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
-
             reader.onload = function(e) {
                 $('#uploaded_image')
                     .attr('src', e.target.result)
                     .width(350)
                     .height(350);
             };
-
             reader.readAsDataURL(input.files[0]);
         }
     }
@@ -72,5 +69,38 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="resultPopUp" tabindex="-1" aria-labelledby="resultPopUpLabel" aria-hidden="true"> <!-- Add this line to your code -->
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="resultPopUpLabel">This is your Coffee Bean Type 😉</h5>
+            </div>
+            <div class="modal-body">
+                <?php if (session()->getFlashdata('success')) : ?>
+                    <div class="alert alert-success" role="alert">
+                        <?= session()->getFlashdata('success'); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if (session()->getFlashdata('error')) : ?>
+                    <div class="alert alert-danger" role="alert">
+                        <?= session()->getFlashdata('error'); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div> <!-- And the relavant closing div tag -->
+
+<?php if (session()->getFlashdata('success') || session()->getFlashdata('error') != null) : ?>
+    <script type="text/javascript">
+        window.onload = () => {
+            $('#resultPopUp').modal('show');
+        }
+    </script>
+<?php endif; ?>
 
 <?= $this->include('homepage/template/footer'); ?>

@@ -41,7 +41,7 @@ $routes->get('/signout', 'Home\Auth::signout');
 
 // Detection Routes
 $routes->get('/detection', 'Home\Detection::index', ['filter' => 'authenclient']);
-$routes->get('/test', 'Home\Detection::detect', ['filter' => 'authenclient', 'throttler']);
+$routes->post('/detection', 'Home\Detection::index', ['filter' => 'authenclient', 'throttler']);
 
 // REST API Routes
 $routes->get('/api/detection', 'Home\ApiDetection', ['filter' => 'apifilter', 'throttler']);

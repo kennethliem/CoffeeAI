@@ -29,19 +29,44 @@ class Detection extends BaseController
             'information' => $this->appInfoModel->getAppInformation(),
             'sponsors' => $this->sponsorsModel->getSponsors(),
         ];
-        return view('homepage/detection', $data);
-    }
 
-    public function detect() // Under development
-    {
-        $client = new \CodeIgniter\HTTP\CURLRequest(
-            new \Config\App(),
-            new \CodeIgniter\HTTP\URI(),
-            new \CodeIgniter\HTTP\Response(new \Config\App()),
-        );
+        if ($this->request->getMethod() == 'post') {
+            helper(['form']);
 
-        $response = $client->request('GET', 'https://api.publicapis.org/entries');
-        dd($response->getBody());
-        return view('homepage/detection');
+            $file = $this->request->getFile('image');
+            $fileName = $file->getRandomName();
+            if ($file->isValid() && !$file->hasMoved()) {
+                $file->move(WRITEPATH . 'images/uploads/', $fileName);
+
+                // Using native PHP Curl library
+                $curl = curl_init();
+                curl_setopt_array($curl, array(
+                    CURLOPT_URL => 'http://127.0.0.1:5000/api/detection',
+                    CURLOPT_RETURNTRANSFER => true,
+                    CURLOPT_ENCODING => '',
+                    CURLOPT_MAXREDIRS => 10,
+                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_FOLLOWLOCATION => true,
+                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                    CURLOPT_CUSTOMREQUEST => 'POST',
+                    CURLOPT_POSTFIELDS => array('image' => new \CURLFile(WRITEPATH . 'images/uploads/' . $fileName)),
+                ));
+                $response = curl_exec($curl);
+                if (curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200) {
+                    $data['response'] = json_decode($response, true);
+                    unlink(WRITEPATH . 'images/uploads/' . $fileName);
+                    session()->setFlashdata('success', $data['response']['coffeeType']);
+                    return redirect()->to(base_url('/detection'))->withInput();
+                } else {
+                    session()->setFlashdata('error', 'Internal server error, please try again');
+                    return redirect()->to(base_url('/detection'))->withInput();
+                }
+            } else {
+                session()->setFlashdata('error', 'Upload error, please try again');
+                return redirect()->to(base_url('/detection'))->withInput();
+            }
+        } else {
+            return view('homepage/detection', $data);
+        }
     }
 }

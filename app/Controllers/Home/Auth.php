@@ -48,10 +48,7 @@ class Auth extends BaseController
                 );
                 $jwt = JWT::encode($payload, $key, 'HS256');
                 $user = $this->clientsModel->where('email', $this->request->getVar('email'))->first();
-                $data = [
-                    'token' => $jwt,
-                ];
-                $user = $user + $data;
+                $user['token'] = $jwt;
                 $this->setUserSession($user);
                 return redirect()->to(base_url('/detection'));
             }
