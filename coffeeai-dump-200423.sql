@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2023 at 02:31 PM
+-- Generation Time: Apr 19, 2023 at 09:02 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -86,6 +86,7 @@ CREATE TABLE `clients` (
   `uuid` varchar(50) NOT NULL,
   `email` varchar(100) NOT NULL,
   `fullname` varchar(100) NOT NULL,
+  `token` varchar(255) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL
@@ -95,9 +96,9 @@ CREATE TABLE `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`uuid`, `email`, `fullname`, `password_hash`, `created_at`, `updated_at`) VALUES
-('a9155b09-4477-4e94-bbef-0cfd5bc477e9', 'robert.theo@gmail.com', 'Robert Theo', '$2y$10$GpSjefncheqIlgnMktF7/.bW486sQADbYTccR8aWxXNMydnWhAIwK', '2023-04-16 06:26:29', '2023-04-16 06:26:29'),
-('aa4a85ac-ce55-4f72-9b1b-a421dbe79c51', 'kennethliem991@gmail.com', 'Kenneth Liem Hardadi', '$2y$10$GySch3aWeIaaF6A0L8gE1epNeRv8q1..H717WtseTPYpwQvh3O/ka', '2023-04-19 11:12:44', '2023-04-19 11:12:44');
+INSERT INTO `clients` (`uuid`, `email`, `fullname`, `token`, `password_hash`, `created_at`, `updated_at`) VALUES
+('a9155b09-4477-4e94-bbef-0cfd5bc477e9', 'robert.theo@gmail.com', 'Robert Theo', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDb2ZmZWVBSS1CYWNrZW5kU3lzdGVtIiwiaWF0IjoxNjgxOTI4MjY5LCJleHAiOjE2ODE5MjgzMjksImVtYWlsIjoicm9iZXJ0LnRoZW9AZ21haWwuY29tIn0.VpjlL9LM7LvtP6JxkmHzXWTVgiS5t3ffzCDqKZPWk4M', '$2y$10$GpSjefncheqIlgnMktF7/.bW486sQADbYTccR8aWxXNMydnWhAIwK', '2023-04-16 06:26:29', '2023-04-19 18:17:49'),
+('aa4a85ac-ce55-4f72-9b1b-a421dbe79c51', 'kennethliem991@gmail.com', 'Kenneth Liem Hardadi', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDb2ZmZWVBSS1CYWNrZW5kU3lzdGVtIiwiaWF0IjoxNjgxOTMwODQxLCJleHAiOjE2ODI1MzU2NDEsImVtYWlsIjoia2VubmV0aGxpZW05OTFAZ21haWwuY29tIn0.KM_MyD0_8Ar9hH5wInjdSlHkcJ84GhslKJAIVs3jW1c', '$2y$10$GySch3aWeIaaF6A0L8gE1epNeRv8q1..H717WtseTPYpwQvh3O/ka', '2023-04-19 11:12:44', '2023-04-19 19:00:41');
 
 -- --------------------------------------------------------
 
@@ -253,7 +254,18 @@ INSERT INTO `request_history` (`id`, `email`, `code`, `result`, `is_error`, `thr
 (10, 'kennethliem991@gmail.com', '200', 'Arabika Gayo', 0, 'WEB', '2023-04-19 19:26:18'),
 (11, 'robert.theo@gmail.com', '200', 'Arabika Gayo', 0, 'WEB', '2023-04-19 19:26:44'),
 (12, 'robert.theo@gmail.com', '200', 'Robusta Gayo', 0, 'API', '2023-04-19 19:26:59'),
-(13, 'robert.theo@gmail.com', '200', 'Arabika Gayo', 0, 'WEB', '2023-04-19 19:30:02');
+(13, 'robert.theo@gmail.com', '200', 'Arabika Gayo', 0, 'WEB', '2023-04-19 19:30:02'),
+(14, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'WEB', '2023-04-19 22:06:57'),
+(15, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-19 22:19:30'),
+(16, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-19 22:21:14'),
+(17, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-19 22:21:24'),
+(18, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-20 00:58:17'),
+(19, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-20 00:59:22'),
+(20, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-20 01:16:31'),
+(21, 'robert.theo@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-20 01:18:03'),
+(22, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-20 01:45:55'),
+(23, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'WEB', '2023-04-20 01:46:23'),
+(24, 'kennethliem991@gmail.com', '500', 'Upload error, please try again', 1, 'WEB', '2023-04-20 01:59:03');
 
 -- --------------------------------------------------------
 
@@ -406,7 +418,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `request_history`
 --
 ALTER TABLE `request_history`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
