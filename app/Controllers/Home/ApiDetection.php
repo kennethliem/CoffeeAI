@@ -2,18 +2,35 @@
 
 namespace App\Controllers\Home;
 
-use App\Models\AdminModel;
+use App\Models\RequestHistoryModel;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
 
 class ApiDetection extends ResourceController
 {
     use ResponseTrait;
+
+    protected $requestHistoryModel;
+    public function __construct()
+    {
+        $this->requestHistoryModel = new RequestHistoryModel();
+    }
+
     public function index()
     {
         if ($this->request->getMethod() == 'post') {
             helper(['form']);
             $file = $this->request->getFile('image');
+            $header = $this->request->getHeaderLine("Authorization");
+
+            $key = getenv('JWT_SECRET');
+            if (preg_match('/Bearer\s(\S+)/', $header, $matches)) {
+                $token = $matches[1];
+            }
+            $decoded = JWT::decode($token, new Key($key, 'HS256'));
+            $decoded = json_decode(json_encode($decoded), true);
 
             if ($file != null && $file->isValid() && !$file->hasMoved()) {
                 $fileName = $file->getRandomName();
@@ -32,27 +49,42 @@ class ApiDetection extends ResourceController
                     CURLOPT_POSTFIELDS => array('image' => new \CURLFile(WRITEPATH . 'images/uploads/' . $fileName)),
                 ));
                 $response = curl_exec($curl);
-                if (curl_getinfo($curl, CURLINFO_HTTP_CODE) == 200) {
+                $requestCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+                if ($requestCode == 200) {
+                    $result = json_decode($response, true);
+                    $this->requestHistoryModel->save([
+                        'email' => $decoded['email'],
+                        'code' => 200,
+                        'result' => $result['coffeeType'],
+                        'is_error' => 0,
+                        'through' => 'API'
+                    ]);
                     unlink(WRITEPATH . 'images/uploads/' . $fileName);
-                    return $this->respond(json_decode($response, true));
+                    return $this->respond($result);
                 } else {
-                    $data['coffeeType'] = null;
-                    $data['error'] = true;
-                    $data['message'] = "Internal server error, please try again" . curl_getinfo($curl, CURLINFO_HTTP_CODE);
-                    return $this->respond($data);
+                    return $this->respond($this->getError("Internal server error, please try again", $decoded['email'], $requestCode));
                 }
             } else {
-                $data['coffeeType'] = null;
-                $data['error'] = true;
-                $data['message'] = "Can't get Image file, please try again";
-                return $this->respond($data);
+                return $this->respond($this->getError("Can't get Image file, please try again", $decoded['email'], 500));
             }
         } else {
-            $data['coffeeType'] = null;
-            $data['error'] = true;
-            $data['message'] = "Wrong method";
-            return $this->respond($data);
+            return $this->respond($this->getError("Wrong Method"));
         }
         return $this->respond();
+    }
+
+    public function getError($message, $email = "-", $code = 001)
+    {
+        $data['coffeeType'] = null;
+        $data['error'] = true;
+        $data['message'] = $message;
+        $this->requestHistoryModel->save([
+            'email' => $email,
+            'code' => $code,
+            'result' => $message,
+            'is_error' => 1,
+            'through' => 'API'
+        ]);
+        return $data;
     }
 }

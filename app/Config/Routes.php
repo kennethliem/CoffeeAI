@@ -34,14 +34,12 @@ $routes->setAutoRoute(false);
 $routes->get('/', 'Home\Home::index');
 
 // Authen Clients Routes
-$routes->get('/signup', 'Home\Auth::signup');
-$routes->post('/signup', 'Home\Auth::signup');
+$routes->match(['get', 'post'], '/signup', 'Home\Auth::signup', ['filter' => 'noauthclient']);
 $routes->match(['get', 'post'], '/signin', 'Home\Auth::signin', ['filter' => 'noauthclient']);
 $routes->get('/signout', 'Home\Auth::signout');
 
 // Detection Routes
-$routes->get('/detection', 'Home\Detection::index', ['filter' => 'authenclient']);
-$routes->post('/detection', 'Home\Detection::index', ['filter' => 'authenclient', 'throttler']);
+$routes->match(['get', 'post'], '/detection', 'Home\Detection::index', ['filter' => 'authenclient', 'throttler']);
 
 // REST API Routes
 $routes->post('/api/detection', 'Home\ApiDetection', ['filter' => 'apifilter', 'throttler']);
