@@ -44,7 +44,7 @@ $routes->get('/detection', 'Home\Detection::index', ['filter' => 'authenclient']
 $routes->post('/detection', 'Home\Detection::index', ['filter' => 'authenclient', 'throttler']);
 
 // REST API Routes
-$routes->get('/api/detection', 'Home\ApiDetection', ['filter' => 'apifilter', 'throttler']);
+$routes->post('/api/detection', 'Home\ApiDetection', ['filter' => 'apifilter', 'throttler']);
 
 // Authen Admin Routes
 $routes->match(['get', 'post'], '/admin/signin', 'Admin\Auth::index', ['filter' => 'noauthadmin']);
