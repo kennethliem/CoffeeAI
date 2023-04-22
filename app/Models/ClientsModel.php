@@ -10,7 +10,7 @@ class ClientsModel extends UuidModel
     protected $primaryKey = 'uuid';
     protected $useAutoIncrement = false;
     protected $useTimestamps = true;
-    protected $allowedFields = ['uuid', 'email', 'fullname', 'password_hash', 'token'];
+    protected $allowedFields = ['uuid', 'email', 'fullname', 'password_hash', 'token', 'regenerate_quota', 'updated_by'];
     protected $beforeInsert = ['beforeInsert'];
     protected $beforeUpddate = ['beforeUpdate'];
 
@@ -20,6 +20,11 @@ class ClientsModel extends UuidModel
             return $this->findAll();
         }
         return $this->where(['uuid' => $uuid])->first();
+    }
+
+    public function getClientsExcededQuota()
+    {
+        return $this->where(['regenerate_quota =' => 0])->findAll();
     }
 
     protected function beforeInsert(array $data)

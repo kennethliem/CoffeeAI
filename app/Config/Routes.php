@@ -98,6 +98,9 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('clients', function ($routes) {
         $routes->get('/', 'Admin\ClientInfo::index');
+        $routes->put('update/(:any)', 'Admin\ClientInfo::resetQuota/$1');
+        $routes->put('generate/(:any)', 'Admin\ClientInfo::generateToken/$1');
+        $routes->get('detail/(:any)', 'Admin\ClientInfo::getTokenDetail/$1');
     });
     $routes->group('contents', function ($routes) {
         $routes->get('/', 'Admin\PageContent::index');

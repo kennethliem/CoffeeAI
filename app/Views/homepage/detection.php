@@ -98,8 +98,6 @@
 <script defer>
     $(document).ready(function() {
         $('body').on("click", ".view_data", function(event) {
-            var uuid = $(this).attr("id");
-            // memulai ajax
             $.ajax({
                 url: '<?= base_url('/tokenDetail'); ?>',
                 method: 'get',
