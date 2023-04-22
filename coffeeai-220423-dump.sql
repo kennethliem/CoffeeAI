@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2023 at 09:02 PM
+-- Generation Time: Apr 22, 2023 at 03:59 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.0.25
 
@@ -87,7 +87,9 @@ CREATE TABLE `clients` (
   `email` varchar(100) NOT NULL,
   `fullname` varchar(100) NOT NULL,
   `token` varchar(255) NOT NULL,
+  `regenerate_quota` int(2) NOT NULL,
   `password_hash` varchar(255) NOT NULL,
+  `updated_by` varchar(100) NOT NULL,
   `created_at` datetime DEFAULT current_timestamp(),
   `updated_at` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -96,9 +98,10 @@ CREATE TABLE `clients` (
 -- Dumping data for table `clients`
 --
 
-INSERT INTO `clients` (`uuid`, `email`, `fullname`, `token`, `password_hash`, `created_at`, `updated_at`) VALUES
-('a9155b09-4477-4e94-bbef-0cfd5bc477e9', 'robert.theo@gmail.com', 'Robert Theo', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDb2ZmZWVBSS1CYWNrZW5kU3lzdGVtIiwiaWF0IjoxNjgxOTI4MjY5LCJleHAiOjE2ODE5MjgzMjksImVtYWlsIjoicm9iZXJ0LnRoZW9AZ21haWwuY29tIn0.VpjlL9LM7LvtP6JxkmHzXWTVgiS5t3ffzCDqKZPWk4M', '$2y$10$GpSjefncheqIlgnMktF7/.bW486sQADbYTccR8aWxXNMydnWhAIwK', '2023-04-16 06:26:29', '2023-04-19 18:17:49'),
-('aa4a85ac-ce55-4f72-9b1b-a421dbe79c51', 'kennethliem991@gmail.com', 'Kenneth Liem Hardadi', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDb2ZmZWVBSS1CYWNrZW5kU3lzdGVtIiwiaWF0IjoxNjgxOTMwODQxLCJleHAiOjE2ODI1MzU2NDEsImVtYWlsIjoia2VubmV0aGxpZW05OTFAZ21haWwuY29tIn0.KM_MyD0_8Ar9hH5wInjdSlHkcJ84GhslKJAIVs3jW1c', '$2y$10$GySch3aWeIaaF6A0L8gE1epNeRv8q1..H717WtseTPYpwQvh3O/ka', '2023-04-19 11:12:44', '2023-04-19 19:00:41');
+INSERT INTO `clients` (`uuid`, `email`, `fullname`, `token`, `regenerate_quota`, `password_hash`, `updated_by`, `created_at`, `updated_at`) VALUES
+('0cb8be6f-9119-4f40-8ba0-2a2791740273', 'geraldo@gmail.com', 'geraldo', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDb2ZmZWVBSS1BZG1pbiIsImlhdCI6MTY4MjE3MDQ5MCwiZXhwIjoxNjgyMzQzMjkwLCJlbWFpbCI6ImdlcmFsZG9AZ21haWwuY29tIn0.-aiR1M6mzBd362ScHFq7zO0HDfszpFpYmgMbuwCmJz0', 4, '$2y$10$u0AY6f5TAt3m3J2iEG05teE2Ev/DciFp5Zrc4K3FMNWLfgVPykV3W', 'Admin : Kenneth Liem Hardadi', '2023-04-22 10:28:56', '2023-04-22 13:34:50'),
+('a9155b09-4477-4e94-bbef-0cfd5bc477e9', 'robert.theo@gmail.com', 'Robert Theo', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDb2ZmZWVBSS1CYWNrZW5kU3lzdGVtIiwiaWF0IjoxNjgyMTcwNTIwLCJleHAiOjE2ODI0Mjk3MjAsImVtYWlsIjoicm9iZXJ0LnRoZW9AZ21haWwuY29tIn0.6uLpJ2eR_ZAjH7VnJjdkWB1u5QW_8th_bv8maGqcbgc', 4, '$2y$10$GpSjefncheqIlgnMktF7/.bW486sQADbYTccR8aWxXNMydnWhAIwK', 'Account Owner : Robert Theo', '2023-04-16 06:26:29', '2023-04-22 13:35:20'),
+('aa4a85ac-ce55-4f72-9b1b-a421dbe79c51', 'kennethliem991@gmail.com', 'Kenneth Liem Hardadi', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJDb2ZmZWVBSS1BZG1pbiIsImlhdCI6MTY4MjE3MTg4NywiZXhwIjoxNzEzNzA3ODg3LCJlbWFpbCI6Imtlbm5ldGhsaWVtOTkxQGdtYWlsLmNvbSJ9.a5Gb4SJoXcYTOdR5FPXvzK9oAl7IKmBu2-J74oAZfw8', 5, '$2y$10$GySch3aWeIaaF6A0L8gE1epNeRv8q1..H717WtseTPYpwQvh3O/ka', 'Admin : Kenneth Liem Hardadi', '2023-04-19 11:12:44', '2023-04-22 13:58:07');
 
 -- --------------------------------------------------------
 
@@ -265,7 +268,13 @@ INSERT INTO `request_history` (`id`, `email`, `code`, `result`, `is_error`, `thr
 (21, 'robert.theo@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-20 01:18:03'),
 (22, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-20 01:45:55'),
 (23, 'kennethliem991@gmail.com', '0', 'Internal server error, please try again', 1, 'WEB', '2023-04-20 01:46:23'),
-(24, 'kennethliem991@gmail.com', '500', 'Upload error, please try again', 1, 'WEB', '2023-04-20 01:59:03');
+(24, 'kennethliem991@gmail.com', '500', 'Upload error, please try again', 1, 'WEB', '2023-04-20 01:59:03'),
+(25, 'geraldo@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-22 18:23:52'),
+(26, 'geraldo@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-22 19:29:55'),
+(27, 'geraldo@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-22 19:30:09'),
+(28, 'geraldo@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-22 19:30:17'),
+(29, 'geraldo@gmail.com', '0', 'Internal server error, please try again', 1, 'API', '2023-04-22 20:05:09'),
+(30, 'geraldo@gmail.com', '500', 'Upload error, please try again', 1, 'WEB', '2023-04-22 20:05:36');
 
 -- --------------------------------------------------------
 
@@ -418,7 +427,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `request_history`
 --
 ALTER TABLE `request_history`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
