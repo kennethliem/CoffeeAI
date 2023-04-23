@@ -55,7 +55,10 @@ $routes->get('/admin/signout', 'Admin\Auth::signout');
 $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     $routes->get('/', 'Admin\Welcome::index');
 
-    $routes->get('dashboard', 'Admin\Dashboard::index');
+    $routes->group('dashboard', function ($routes) {
+        $routes->get('/', 'Admin\Dashboard::index');
+        $routes->put('engine', 'Admin\Dashboard::enableEngine');
+    });
 
     $routes->group('information', function ($routes) {
         $routes->get('/', 'Admin\AppInformation::index');

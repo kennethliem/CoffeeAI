@@ -22,6 +22,15 @@ class ClientsModel extends UuidModel
         return $this->where(['uuid' => $uuid])->first();
     }
 
+    public function countTotalClients()
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('clients');
+        $builder->select('(SELECT COUNT(uuid) FROM clients) AS total_clients', false);
+        $query = $builder->get()->getRowArray();
+        return $query;
+    }
+
     public function getClientsExcededQuota()
     {
         return $this->where(['regenerate_quota =' => 0])->findAll();
