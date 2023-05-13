@@ -40,7 +40,7 @@ class Dashboard extends BaseController
     {
         $client = \Config\Services::curlrequest();
         try {
-            $response = $client->request('GET', 'http://127.0.0.1:5000/api/check/');
+            $response = $client->request('GET', 'http://localhost:8000/api/check/');
             $response->getBody();
             $array = json_decode($response->getBody(), true);
         } catch (Exception) {
@@ -59,7 +59,7 @@ class Dashboard extends BaseController
         $curl = curl_init();
         if (htmlspecialchars($this->request->getVar('setEnable')) ==  1) {
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'http://127.0.0.1:5000/api/check/enable',
+                CURLOPT_URL => 'http://localhost:8000/api/check/enable',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
@@ -73,7 +73,7 @@ class Dashboard extends BaseController
             curl_close($curl);
         } else if (htmlspecialchars($this->request->getVar('setEnable')) ==  0) {
             curl_setopt_array($curl, array(
-                CURLOPT_URL => 'http://127.0.0.1:5000/api/check/disable',
+                CURLOPT_URL => 'http://localhost:8000/api/check/disable',
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => '',
                 CURLOPT_MAXREDIRS => 10,
