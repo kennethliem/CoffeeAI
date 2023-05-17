@@ -21,17 +21,13 @@ class ModelVersions extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '5'
             ],
-            'model_location'       => [
-                'type'           => 'VARCHAR',
-                'constraint'     => '255'
-            ],
             'created_at DATETIME DEFAULT CURRENT_TIMESTAMP',
             'updated_at'       => [
                 'type'           => 'DATETIME'
             ],
-            'is_active'       => [
-                'type'           => 'INT',
-                'constraint'     => 1
+            'updated_by'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => '100'
             ],
         ]);
 

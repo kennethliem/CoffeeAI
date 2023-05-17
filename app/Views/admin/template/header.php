@@ -24,7 +24,7 @@
 
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
         <a class="navbar-brand me-lg-5" href="<?= base_url('/'); ?>">
-            <img class="navbar-brand-dark" src="<?= base_url('admin_assets/assets/img/brand/light.svg'); ?>" alt="Coffee logo" /> <img class="navbar-brand-light" src="<?= base_url('admin_assets/assets/img/brand/dark.svg'); ?>" alt="Coffee logo" />
+            <img class="navbar-brand-dark" src="<?= base_url('home_assets/img/logo/logo.png'); ?>" alt="Coffee logo" /> <img class="navbar-brand-light" src="<?= base_url('home_assets/img/logo/logo.png'); ?>" alt="Coffee logo" />
         </a>
         <div class="d-flex align-items-center">
             <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,9 +49,9 @@
                 <li class="nav-item">
                     <a href="<?= base_url('/'); ?>" class="nav-link d-flex align-items-center">
                         <span class="sidebar-icon">
-                            <img src="<?= base_url('admin_assets/assets/img/brand/light.svg'); ?>" height="20" width="20" alt="Coffee Logo">
+                            <img src="<?= base_url('home_assets/img/logo/logo.png'); ?>" height="50" width="50" alt="Coffee Logo">
                         </span>
-                        <span class="mt-1 ms-1 sidebar-text">CoffeeAI</span>
+                        <h4 class="mt-3 sidebar-text">CoffeeAI</h4>
                     </a>
                 </li>
 
@@ -60,24 +60,17 @@
                 <li class="nav-item  active ">
                     <a href="<?= base_url('/admin/dashboard'); ?>" class="nav-link">
                         <span class="sidebar-icon">
-                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
-                                <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
-                            </svg>
+                            <i class="bi bi-speedometer me-2"></i>
                         </span>
                         <span class="sidebar-text">Dashboard</span>
                     </a>
                 </li>
 
-
-
                 <li class="nav-item">
                     <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#page_content">
                         <span>
                             <span class="sidebar-icon">
-                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path>
-                                </svg>
+                                <i class="bi bi-journal-album me-2"></i>
                             </span>
                             <span class="sidebar-text">Page Management</span>
                         </span>
@@ -129,11 +122,18 @@
                 </li>
 
                 <li class="nav-item ">
+                    <a href="<?= base_url('/admin/clients'); ?>" class="nav-link">
+                        <span class="sidebar-icon">
+                            <i class=" bi bi-person-fill-add me-2"></i>
+                        </span>
+                        <span class="sidebar-text">Client Information</span>
+                    </a>
+                </li>
+
+                <li class="nav-item ">
                     <a href="<?= base_url('/admin/modelconfig'); ?>" class="nav-link">
                         <span class="sidebar-icon">
-                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
-                            </svg>
+                            <i class="bi bi-gear me-2"></i>
                         </span>
                         <span class="sidebar-text">ML Model Config</span>
                     </a>
@@ -146,9 +146,7 @@
                     <span class="nav-link  collapsed  d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#user_config">
                         <span>
                             <span class="sidebar-icon">
-                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm-1 9v-1h5v2H5a1 1 0 01-1-1zm7 1h4a1 1 0 001-1v-1h-5v2zm0-4h5V8h-5v2zM9 8H4v2h5V8z" clip-rule="evenodd"></path>
-                                </svg>
+                                <i class="bi bi-file-earmark-person me-2"></i>
                             </span>
                             <span class="sidebar-text">User Configuration</span>
                         </span>

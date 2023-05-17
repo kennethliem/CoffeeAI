@@ -172,14 +172,16 @@
                                     <div class="col text-end">
                                         <?php
                                         if ($engine['message'] != "Server disconnected") :
-                                            if (session()->get('role') == 1) : ?>
-                                                <form action="<?= base_url('admin/dashboard/engine'); ?>" method="POST" class="d-inline">
-                                                    <?= csrf_field(); ?>
-                                                    <input type="hidden" name="_method" value="PUT">
-                                                    <input type="hidden" name="setEnable" value="<?= $engine['status'] ==  "Online" ? '0' : '1'; ?>">
-                                                    <button type="submit" class="btn btn-<?= $engine['status'] ==  "Online" ? 'danger' : 'primary'; ?> mb-1"><i class="<?= $engine['status'] ==  'Online' ? 'bi bi-stop-circle-fill' : 'bi bi-play-circle-fill'; ?>"></i></button>
-                                                </form>
+                                            if (session()->get('role') == 1) :
+                                                if ($engine['message'] != "Engine Ready - Retraining in progress") : ?>
+                                                    <form action="<?= base_url('admin/dashboard/engine'); ?>" method="POST" class="d-inline">
+                                                        <?= csrf_field(); ?>
+                                                        <input type="hidden" name="_method" value="PUT">
+                                                        <input type="hidden" name="setEnable" value="<?= $engine['status'] ==  "Online" ? '0' : '1'; ?>">
+                                                        <button type="submit" class="btn btn-<?= $engine['status'] ==  "Online" ? 'danger' : 'primary'; ?> mb-1"><i class="<?= $engine['status'] ==  'Online' ? 'bi bi-stop-circle-fill' : 'bi bi-play-circle-fill'; ?>"></i></button>
+                                                    </form>
                                         <?php
+                                                endif;
                                             endif;
                                         endif; ?>
                                     </div>
@@ -201,7 +203,7 @@
                                 <div class="col">
                                     <div class="progress-wrapper">
                                         <div class="progress-info">
-                                            <?php $percent = (int)$error['total'] / (int)$requests['total_request'] * 100; ?>
+                                            <?php $percent = number_format((float)(int)$error['total'] / (int)$requests['total_request'] * 100, 2, '.', ''); ?>
                                             <div class="h6 mb-0"><?= $error['result']; ?></div>
                                             <div class="small fw-bold text-gray-500"><span><?= $percent; ?> %</span></div>
                                         </div>

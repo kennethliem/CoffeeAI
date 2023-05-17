@@ -114,6 +114,7 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('modelconfig', function ($routes) {
         $routes->get('/', 'Admin\ModelConfig::index');
+        $routes->post('retrain', 'Admin\ModelConfig::retrain');
     });
     $routes->group('profile', function ($routes) {
         $routes->get('/', 'Admin\Profile::index');

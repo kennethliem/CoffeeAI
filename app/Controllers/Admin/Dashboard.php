@@ -89,7 +89,7 @@ class Dashboard extends BaseController
         $array = json_decode($response, true);
         $requestCode = curl_getinfo($curl, CURLINFO_HTTP_CODE);
         if ($requestCode == 200) {
-            if ($array['error'] == True) {
+            if ($array['error'] == false) {
                 session()->setFlashdata('error', $array['message']);
             } else {
                 session()->setFlashdata('success', $array['message']);
