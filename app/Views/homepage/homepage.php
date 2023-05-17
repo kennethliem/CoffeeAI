@@ -329,28 +329,28 @@
               <div class="info-box">
                 <i class="bi bi-geo-alt"></i>
                 <h3>Address</h3>
-                <p>Tangerang, Indonesia 535022</p>
+                <p><?= $information[0]['app_address']; ?></p>
               </div>
             </div>
             <div class="col-md-3">
               <div class="info-box">
                 <i class="bi bi-telephone"></i>
                 <h3>Call Us</h3>
-                <p>+1 5589 55488 55</p>
+                <p><?= $information[0]['app_phone_number']; ?></p>
               </div>
             </div>
             <div class="col-md-3">
               <div class="info-box">
                 <i class="bi bi-envelope"></i>
                 <h3>Email Us</h3>
-                <p>hello@coffeeai.online</p>
+                <p><?= $information[0]['app_email']; ?></p>
               </div>
             </div>
             <div class="col-md-3">
               <div class="info-box">
                 <i class="bi bi-clock"></i>
                 <h3>Operational Hours</h3>
-                <p>Monday - Friday 9:00AM - 05:00PM</p>
+                <p><?= $information[0]['app_operational_hours']; ?></p>
               </div>
             </div>
           </div>
