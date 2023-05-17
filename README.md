@@ -19,7 +19,9 @@ Our coffee bean detection website is a platform designed to assist coffee enthus
 
 ![AppScreenshots](https://user-images.githubusercontent.com/69246482/224529673-b68d91b4-c21b-4674-b109-7884e7445f8a.png)
 
-### Homepage Screenshots
+### Admin Dashboard Screenshots
+
+![AdminScreenshot](https://github.com/kennethliem/CoffeeAI/assets/69246482/8f2807db-0fb8-41c9-b7c9-f2f8222fa93f)
 
 ### Detection API
 
