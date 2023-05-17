@@ -48,8 +48,6 @@
 </script>
 
 
-
-
 <div class="modal fade" id="resultPopUp" tabindex="-1" aria-labelledby="resultPopUpLabel" aria-hidden="true"> <!-- Add this line to your code -->
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -81,7 +79,7 @@
     </div>
 </div> <!-- And the relavant closing div tag -->
 
-<?php if (session()->getFlashdata('success') || session()->getFlashdata('error') != null) : ?>
+<?php if (session()->getFlashdata('coffeeType') || session()->getFlashdata('error') != null) : ?>
     <script type="text/javascript">
         window.onload = () => {
             $('#resultPopUp').modal('show');
@@ -98,8 +96,6 @@
 <script defer>
     $(document).ready(function() {
         $('body').on("click", ".view_data", function(event) {
-            var uuid = $(this).attr("id");
-            // memulai ajax
             $.ajax({
                 url: '<?= base_url('/tokenDetail'); ?>',
                 method: 'get',

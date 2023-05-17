@@ -19,7 +19,7 @@
             <?php endif; ?>
 
             <button type="submit" class="btn btn-outline-gray-600 d-inline-flex align-items-center">
-                <i class=" bi bi-person-fill-add me-2"></i>
+                <i class="bi bi-plus-circle me-2"></i>
                 Update
             </button>
         </div>

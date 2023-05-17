@@ -55,7 +55,10 @@ $routes->get('/admin/signout', 'Admin\Auth::signout');
 $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     $routes->get('/', 'Admin\Welcome::index');
 
-    $routes->get('dashboard', 'Admin\Dashboard::index');
+    $routes->group('dashboard', function ($routes) {
+        $routes->get('/', 'Admin\Dashboard::index');
+        $routes->put('engine', 'Admin\Dashboard::enableEngine');
+    });
 
     $routes->group('information', function ($routes) {
         $routes->get('/', 'Admin\AppInformation::index');
@@ -98,6 +101,9 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('clients', function ($routes) {
         $routes->get('/', 'Admin\ClientInfo::index');
+        $routes->put('update/(:any)', 'Admin\ClientInfo::resetQuota/$1');
+        $routes->put('generate/(:any)', 'Admin\ClientInfo::generateToken/$1');
+        $routes->get('detail/(:any)', 'Admin\ClientInfo::getTokenDetail/$1');
     });
     $routes->group('contents', function ($routes) {
         $routes->get('/', 'Admin\PageContent::index');
@@ -108,6 +114,7 @@ $routes->group('admin',  ['filter' => 'authenadmin'], function ($routes) {
     });
     $routes->group('modelconfig', function ($routes) {
         $routes->get('/', 'Admin\ModelConfig::index');
+        $routes->post('retrain', 'Admin\ModelConfig::retrain');
     });
     $routes->group('profile', function ($routes) {
         $routes->get('/', 'Admin\Profile::index');

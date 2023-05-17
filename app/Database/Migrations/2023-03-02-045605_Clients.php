@@ -29,6 +29,14 @@ class Clients extends Migration
                 'type'           => 'VARCHAR',
                 'constraint'     => '255'
             ],
+            'regenerate_quota'       => [
+                'type'           => 'INT',
+                'constraint'     => 2
+            ],
+            'updated_by'       => [
+                'type'           => 'VARCHAR',
+                'constraint'     => 100
+            ],
             'created_at DATETIME DEFAULT CURRENT_TIMESTAMP',
             'updated_at'       => [
                 'type'           => 'DATETIME'

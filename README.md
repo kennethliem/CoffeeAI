@@ -15,9 +15,11 @@ Our coffee bean detection website is a platform designed to assist coffee enthus
 
 <b>In the future we will update so that it can be used for other coffee beans type.</b>
 
-### Screenshots
+### Homepage Screenshots
 
 ![AppScreenshots](https://user-images.githubusercontent.com/69246482/224529673-b68d91b4-c21b-4674-b109-7884e7445f8a.png)
+
+### Homepage Screenshots
 
 ### Detection API
 

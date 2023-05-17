@@ -38,7 +38,7 @@ class ApiDetection extends ResourceController
                 // Using native PHP Curl library
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://127.0.0.1:5000/api/detection',
+                    CURLOPT_URL => 'http://localhost:8000/api/detection',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,

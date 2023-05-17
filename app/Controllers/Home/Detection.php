@@ -38,7 +38,7 @@ class Detection extends BaseController
                 // Using native PHP Curl library
                 $curl = curl_init();
                 curl_setopt_array($curl, array(
-                    CURLOPT_URL => 'http://127.0.0.1:5000/api/detection',
+                    CURLOPT_URL => 'http://localhost:8000/api/detection/',
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
@@ -53,20 +53,34 @@ class Detection extends BaseController
                 if ($requestCode == 200) {
                     $data['response'] = json_decode($response, true);
                     $result = $data['response']['coffeeType'];
-                    $this->requestHistoryModel->save([
-                        'email' => session()->get('email'),
-                        'code' => 200,
-                        'result' => $result,
-                        'is_error' => 0,
-                        'through' => 'WEB'
-                    ]);
-                    unlink(WRITEPATH . 'images/uploads/' . $fileName);
-                    session()->setFlashdata('coffeeType', $result);
-                    return redirect()->to(base_url('/detection'))->withInput();
+                    if ($result == null) {
+                        $result = "Internal server error, please try again";
+                        $this->requestHistoryModel->save([
+                            'email' => session()->get('email'),
+                            'code' => 0,
+                            'result' => $result,
+                            'is_error' => 1,
+                            'through' => 'WEB'
+                        ]);
+                        unlink(WRITEPATH . 'images/uploads/' . $fileName);
+                        session()->setFlashdata('error', $result);
+                        return redirect()->to(base_url('/detection'));
+                    } else {
+                        $this->requestHistoryModel->save([
+                            'email' => session()->get('email'),
+                            'code' => 200,
+                            'result' => $result,
+                            'is_error' => 0,
+                            'through' => 'WEB'
+                        ]);
+                        unlink(WRITEPATH . 'images/uploads/' . $fileName);
+                        session()->setFlashdata('coffeeType', $result);
+                        return redirect()->to(base_url('/detection'));
+                    };
                 } else {
                     unlink(WRITEPATH . 'images/uploads/' . $fileName);
                     session()->setFlashdata('error', $this->getError('Internal server error, please try again', session()->get('email'), $requestCode));
-                    return redirect()->to(base_url('/detection'))->withInput();
+                    return redirect()->to(base_url('/detection'));
                 }
             } else {
                 session()->setFlashdata('error', $this->getError('Upload error, please try again', session()->get('email'), 500));
