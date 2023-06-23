@@ -40,7 +40,7 @@ class Dashboard extends BaseController
     {
         $client = \Config\Services::curlrequest();
         try {
-            $response = $client->request('GET', 'http://localhost:8000/api/check/');
+            $response = $client->request('GET', 'http://localhost:8000/api/check/', ['connect_timeout' => 5]);
             $response->getBody();
             $array = json_decode($response->getBody(), true);
         } catch (Exception) {

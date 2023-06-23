@@ -42,7 +42,7 @@ class ApiDetection extends ResourceController
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => '',
                     CURLOPT_MAXREDIRS => 10,
-                    CURLOPT_TIMEOUT => 0,
+                    CURLOPT_TIMEOUT => 7,
                     CURLOPT_FOLLOWLOCATION => true,
                     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
                     CURLOPT_CUSTOMREQUEST => 'POST',
@@ -63,7 +63,7 @@ class ApiDetection extends ResourceController
                     return $this->respond($result);
                 } else {
                     unlink(WRITEPATH . 'images/uploads/' . $fileName);
-                    return $this->respond($this->getError("Internal server error, please try again", $decoded['email'], $requestCode));
+                    return $this->respond($this->getError("Internal server error, please try again(Engine Error)", $decoded['email'], $requestCode));
                 }
             } else {
                 return $this->respond($this->getError("Can't get Image file, please try again", $decoded['email'], 500));
