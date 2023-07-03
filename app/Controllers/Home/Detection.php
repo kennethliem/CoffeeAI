@@ -54,7 +54,7 @@ class Detection extends BaseController
                     $data['response'] = json_decode($response, true);
                     $result = $data['response']['coffeeType'];
                     if ($result == null) {
-                        $result = "Internal server error, please try again";
+                        $result = $data['response']['message'];
                         $this->requestHistoryModel->save([
                             'email' => session()->get('email'),
                             'code' => 0,

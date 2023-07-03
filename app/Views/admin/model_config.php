@@ -59,7 +59,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action='<?= base_url("admin/modelconfig/retrain/"); ?>' method="POST" enctype="multipart/form-data">
+                <form action='<?= base_url("admin/modelconfig/retrain"); ?>' method="POST" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3">
                         <label for="name">Model Name</label>
